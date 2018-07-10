@@ -8,7 +8,7 @@
         <div class="subtitle is-7" slot-scope="article">
           {{ article.item.score }} points by
           <a :href="`https://news.ycombinator.com/user?id=${article.item.author}`" class="hide-underline" target="_blank" rel="noopener noreferrer">{{ article.item.author }}</a>,
-          {{ timeAgo(article.item.time) }}. <a href="`https://news.ycombinator.com/item?id=${article.item.id}`" target="_blank" rel="noopener noreferrer">{{ article.item.comments }} comments.</a>
+          {{ timeAgo(article.item.time) }}. <a :href="`https://news.ycombinator.com/item?id=${article.item.id}`" target="_blank" rel="noopener noreferrer">{{ article.item.comments }} comments.</a>
         </div>
       </Message-Item>
     </Message-Body>
