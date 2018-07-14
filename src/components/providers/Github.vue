@@ -7,8 +7,8 @@
       <Message-Item :data="this.repos" :isLoading="this.isLoading">
         <div class="subtitle is-7" slot-scope="repo">
           {{ repo.item.description }}<br style="line-height: 125%;">
-          {{ repo.item.stars }} stars,
-          {{ repo.item.forks }} forks<span v-if="repo.item.language">, Language:
+          {{ repo.item.stars.toLocaleString() }} stars,
+          {{ repo.item.forks.toLocaleString() }} forks<span v-if="repo.item.language">, Language:
           {{ repo.item.language }}</span>
         </div>
       </Message-Item>
@@ -38,16 +38,9 @@ export default {
   },
   methods: {
     async request() {
-      const response = await fetch('https://github-trending-api.now.sh/repositories');
+      const response = await fetch('https://api.ludicrous.xyz/v1/tab/github/index');
       const data = await response.json();
-      return data.map(repo => ({
-        title: repo.name,
-        url: repo.url,
-        description: repo.description,
-        stars: repo.stars.toLocaleString(),
-        forks: repo.forks.toLocaleString(),
-        language: repo.language,
-      }));
+      return data.repos;
     },
   },
   mounted() {

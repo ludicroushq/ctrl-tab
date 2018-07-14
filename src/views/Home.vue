@@ -10,6 +10,7 @@
 
 <script>
 import HackerNews from '@/components/providers/HackerNews.vue';
+import ProductHunt from '@/components/providers/ProductHunt.vue';
 import Github from '@/components/providers/Github.vue';
 import Reddit from '@/components/providers/Reddit.vue';
 
@@ -17,6 +18,11 @@ const providers = [
   {
     name: 'Reddit',
     component: 'Reddit',
+    selected: true,
+  },
+  {
+    name: 'Product Hunt',
+    component: 'ProductHunt',
     selected: true,
   },
   {
@@ -33,8 +39,10 @@ const providers = [
 
 export default {
   name: 'Home',
+  props: ['query'],
   components: {
     HackerNews,
+    ProductHunt,
     Github,
     Reddit,
   },

@@ -10,7 +10,7 @@
           <a :href="`https://www.reddit.com/u/${article.item.author}`" class="hide-underline" target="_blank" rel="noopener noreferrer">{{ article.item.author }}</a>
           on <a :href="`https://www.reddit.com${article.item.subreddit}`" class="hide-underline" target="_blank" rel="noopener noreferrer">{{ article.item.subreddit }}</a>,
           {{ timeAgo(article.item.created) }}.
-          <a :href="`https://www.reddit.com${article.item.permalink}`" target="_blank" rel="noopener noreferrer">{{ article.item.comments }} comments.</a>
+          <a :href="`https://www.reddit.com${article.item.permalink}`" target="_blank" rel="noopener noreferrer">{{ article.item.comments.toLocaleString() }} comments.</a>
         </div>
       </Message-Item>
     </Message-Body>
@@ -42,22 +42,9 @@ export default {
   methods: {
     timeAgo,
     async request() {
-      const response = await fetch('https://www.reddit.com/r/all.json');
+      const response = await fetch('https://api.ludicrous.xyz/v1/tab/reddit/index');
       const data = await response.json();
-      const posts = data.data.children;
-      return posts.map((post) => {
-        const article = post.data;
-        return {
-          title: article.title,
-          url: article.url,
-          score: article.score.toLocaleString(),
-          author: article.author,
-          created: article.created_utc,
-          permalink: article.permalink,
-          comments: article.num_comments,
-          subreddit: `/r/${article.subreddit}`,
-        };
-      });
+      return data.posts;
     },
   },
   mounted() {
