@@ -10,7 +10,9 @@
           {{ post.item.votes.toLocaleString()}} votes by
           <a :href="`https://www.producthunt.com/@${post.item.author}`" class="hide-underline" target="_blank" rel="noopener noreferrer">@{{ post.item.author }}</a>,
           {{ timeAgo(post.item.created, { unix: false }) }}.
-          <a :href="post.item.commentsURL" target="_blank" rel="noopener noreferrer">View comments.</a>
+          <a :href="post.item.commentsURL" target="_blank" rel="noopener noreferrer">
+            View comments.
+          </a>
         </div>
       </Message-Item>
       <div v-else class="has-text-centered has-text-black">
@@ -43,17 +45,36 @@ export default {
     };
   },
   methods: {
+    timeAgo,
     async request() {
       const response = await fetch('https://api.ludicrous.xyz/v1/tab/product-hunt/index');
       const data = await response.json();
       return data.posts;
     },
-    timeAgo,
+    storeData(data) {
+      localStorage.setItem('product-hunt', JSON.stringify(data));
+    },
+    getData() {
+      try {
+        return JSON.parse(localStorage.getItem('product-hunt'));
+      } catch (err) {
+        return null;
+      }
+    },
   },
-  mounted() {
+  created() {
+    const storage = this.getData();
+    if (storage) {
+      this.posts = storage.data;
+      this.isLoading = false;
+    }
     this.request().then((data) => {
       this.posts = data;
       this.isLoading = false;
+      this.storeData({
+        data,
+        createdAt: Date.now(),
+      });
     });
   },
 };

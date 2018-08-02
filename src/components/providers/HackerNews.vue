@@ -44,11 +44,30 @@ export default {
       const data = await response.json();
       return data.posts;
     },
+    storeData(data) {
+      localStorage.setItem('hacker-news', JSON.stringify(data));
+    },
+    getData() {
+      try {
+        return JSON.parse(localStorage.getItem('hacker-news'));
+      } catch (err) {
+        return null;
+      }
+    },
   },
-  mounted() {
+  created() {
+    const storage = this.getData();
+    if (storage) {
+      this.articles = storage.data;
+      this.isLoading = false;
+    }
     this.request().then((data) => {
       this.articles = data;
       this.isLoading = false;
+      this.storeData({
+        data,
+        createdAt: Date.now(),
+      });
     });
   },
 };

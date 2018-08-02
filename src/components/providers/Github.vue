@@ -42,11 +42,30 @@ export default {
       const data = await response.json();
       return data.repos;
     },
+    storeData(data) {
+      localStorage.setItem('github', JSON.stringify(data));
+    },
+    getData() {
+      try {
+        return JSON.parse(localStorage.getItem('github'));
+      } catch (err) {
+        return null;
+      }
+    },
   },
-  mounted() {
+  created() {
+    const storage = this.getData();
+    if (storage) {
+      this.repos = storage.data;
+      this.isLoading = false;
+    }
     this.request().then((data) => {
       this.repos = data;
       this.isLoading = false;
+      this.storeData({
+        data,
+        createdAt: Date.now(),
+      });
     });
   },
 };
