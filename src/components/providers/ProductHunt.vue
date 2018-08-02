@@ -61,6 +61,15 @@ export default {
         return null;
       }
     },
+    async handler() {
+      const data = await this.request();
+      this.posts = data;
+      this.isLoading = false;
+      this.storeData({
+        data,
+        createdAt: Date.now(),
+      });
+    },
   },
   created() {
     const storage = this.getData();
@@ -68,14 +77,7 @@ export default {
       this.posts = storage.data;
       this.isLoading = false;
     }
-    this.request().then((data) => {
-      this.posts = data;
-      this.isLoading = false;
-      this.storeData({
-        data,
-        createdAt: Date.now(),
-      });
-    });
+    this.handler();
   },
 };
 </script>
