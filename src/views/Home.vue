@@ -53,24 +53,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.home {
-  padding: 1em;
-}
-
-.message-body {
-  padding: 0em;
-  height: 88vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.item {
-  margin: 0.5em;
-}
-
-hr {
-  margin: 0.25em;
-}
-</style>
