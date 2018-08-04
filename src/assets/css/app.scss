@@ -1,4 +1,4 @@
-@import '../node_modules/bulma/sass/utilities/initial-variables';
+@import '~bulma/sass/utilities/initial-variables';
 
 $indigo: #3f51b5;
 $pink: #ff4081;
@@ -8,6 +8,11 @@ $primary: $indigo;
 $info: $pink;
 $link: $indigo;
 
-@import '../node_modules/bulma/bulma.sass';
+@import '~bulma/bulma.sass';
+
+$material-icons-font-path: '~material-icons/iconfont/';
+@import '~material-icons/iconfont/material-icons.scss';
+
+@import '~animate.css/animate.css';
 
 @import './style.scss';
