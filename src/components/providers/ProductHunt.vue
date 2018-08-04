@@ -24,6 +24,7 @@
 
 <script>
 import timeAgo from '@/utils/timeAgo';
+import { getData, storeData } from '@/utils/local-storage';
 
 import Message from '@/components/message/Message.vue';
 import MessageHeader from '@/components/message/MessageHeader.vue';
@@ -51,28 +52,18 @@ export default {
       const data = await response.json();
       return data.posts;
     },
-    storeData(data) {
-      localStorage.setItem('product-hunt', JSON.stringify(data));
-    },
-    getData() {
-      try {
-        return JSON.parse(localStorage.getItem('product-hunt'));
-      } catch (err) {
-        return null;
-      }
-    },
     async handler() {
       const data = await this.request();
       this.posts = data;
       this.isLoading = false;
-      this.storeData({
+      storeData('product-hunt', {
         data,
         createdAt: Date.now(),
       });
     },
   },
   created() {
-    const storage = this.getData();
+    const storage = getData('product-hunt');
     if (storage) {
       this.posts = storage.data;
       this.isLoading = false;

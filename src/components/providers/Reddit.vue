@@ -19,6 +19,7 @@
 
 <script>
 import timeAgo from '@/utils/timeAgo';
+import { getData, storeData } from '@/utils/local-storage';
 
 import Message from '@/components/message/Message.vue';
 import MessageHeader from '@/components/message/MessageHeader.vue';
@@ -46,28 +47,18 @@ export default {
       const data = await response.json();
       return data.posts;
     },
-    storeData(data) {
-      localStorage.setItem('reddit', JSON.stringify(data));
-    },
-    getData() {
-      try {
-        return JSON.parse(localStorage.getItem('reddit'));
-      } catch (err) {
-        return null;
-      }
-    },
     async handler() {
       const data = await this.request();
       this.articles = data;
       this.isLoading = false;
-      this.storeData({
+      storeData('reddit', {
         data,
         createdAt: Date.now(),
       });
     },
   },
   created() {
-    const storage = this.getData();
+    const storage = getData('reddit');
     if (storage) {
       this.articles = storage.data;
       this.isLoading = false;

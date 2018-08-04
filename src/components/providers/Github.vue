@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import { getData, storeData } from '@/utils/local-storage';
+
 import Message from '@/components/message/Message.vue';
 import MessageHeader from '@/components/message/MessageHeader.vue';
 import MessageBody from '@/components/message/MessageBody.vue';
@@ -42,28 +44,18 @@ export default {
       const data = await response.json();
       return data.repos;
     },
-    storeData(data) {
-      localStorage.setItem('github', JSON.stringify(data));
-    },
-    getData() {
-      try {
-        return JSON.parse(localStorage.getItem('github'));
-      } catch (err) {
-        return null;
-      }
-    },
     async handler() {
       const data = await this.request();
       this.repos = data;
       this.isLoading = false;
-      this.storeData({
+      storeData('github', {
         data,
         createdAt: Date.now(),
       });
     },
   },
   created() {
-    const storage = this.getData();
+    const storage = getData('github');
     if (storage) {
       this.repos = storage.data;
       this.isLoading = false;
