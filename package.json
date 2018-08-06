@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "watch": "webpack --config ./node_modules/@vue/cli-service/webpack.config.js --watch",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
@@ -12,6 +13,7 @@
     "animate.css": "^3.7.0",
     "material-icons": "^0.2.3",
     "moment": "^2.22.2",
+    "uuid": "^3.3.2",
     "vue": "^2.5.16",
     "vue-fab": "^2.1.4",
     "vue-router": "^3.0.1"

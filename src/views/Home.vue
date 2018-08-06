@@ -37,6 +37,7 @@ import HackerNews from '@/components/providers/HackerNews.vue';
 import ProductHunt from '@/components/providers/ProductHunt.vue';
 import Github from '@/components/providers/Github.vue';
 import Reddit from '@/components/providers/Reddit.vue';
+import Todoist from '@/components/providers/Todoist.vue';
 
 const providers = [
   {
@@ -59,6 +60,11 @@ const providers = [
     component: 'Github',
     selected: true,
   },
+  {
+    name: 'Todoist',
+    component: 'Todoist',
+    selected: true,
+  },
 ];
 
 export default {
@@ -69,8 +75,10 @@ export default {
     ProductHunt,
     Github,
     Reddit,
+    Todoist,
     fab,
   },
+
   methods: {
     openSettingsModal() {
       this.settingsModal = true;
@@ -79,6 +87,7 @@ export default {
       this.settingsModal = false;
     },
   },
+
   data() {
     return {
       providers,

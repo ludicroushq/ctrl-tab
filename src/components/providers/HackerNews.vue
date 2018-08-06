@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import timeAgo from '@/utils/timeAgo';
+import { timeAgo } from '@/utils/time-ago';
 import { getData, storeData } from '@/utils/local-storage';
 
 import Message from '@/components/message/Message.vue';
