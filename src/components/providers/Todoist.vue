@@ -4,7 +4,7 @@
       Todoist (Today)
     </Message-Header>
     <Message-Body>
-      <div class="has-text-centered content" v-if="this.tasks.length === 0 && !this.isLoading">
+      <div class="has-text-centered content" v-if="!this.authenticated">
         <br>
         <a class="button is-success" @click="login">Log in with Todoist</a>
         <p class="has-text-danger subtitle" v-if="this.oauthError">
@@ -12,7 +12,11 @@
           {{ this.oauthError }}
         </p>
       </div>
-      <Message-Item :isLoading="this.isLoading" :data="this.tasks" v-else>
+      <Message-Item
+        :isLoading="this.isLoading"
+        :data="this.tasks"
+        v-else-if="this.tasks.length > 0"
+      >
         <template slot="title" slot-scope="task">
           <div class="title is-6">
             <a
@@ -29,6 +33,14 @@
           Due {{ calendar(task.item.due, { noTime: task.item.allDay }) }}
         </div>
       </Message-Item>
+      <div class="has-text-centered content" v-else>
+        <br>
+        <div class="item">
+          <div class="title is-6">
+            Looks like you're all done! 🎉
+          </div>
+        </div>
+      </div>
     </Message-Body>
   </Message>
 </template>
@@ -82,6 +94,7 @@ export default {
     return {
       oauthError: null,
       isLoading: true,
+      authenticated: true,
       tasks: [],
     };
   },
@@ -89,6 +102,7 @@ export default {
     const storage = getData('todoist') || {};
 
     if (!storage.token) {
+      this.authenticated = false;
       this.isLoading = false;
       return;
     }
