@@ -48,7 +48,7 @@ export default {
   methods: {
     timeAgo,
     async request() {
-      const response = await fetch('https://api.ludicrous.xyz/v1/tab/product-hunt/index');
+      const response = await fetch('https://tab.api.ludicrous.xyz/v1/product-hunt/index');
       const data = await response.json();
       return data.posts;
     },

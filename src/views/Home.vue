@@ -23,7 +23,12 @@
       @settings="openSettingsModal"
     ></fab>
     <div class="columns">
-      <div class="column" v-for="provider in this.providers" :key="provider.title">
+      <div
+        class="column"
+        v-for="provider in this.providers"
+        :key="provider.title"
+        v-if="provider.selected"
+      >
         <component :is="provider.component"></component>
       </div>
     </div>
@@ -63,7 +68,7 @@ const providers = [
   {
     name: 'Todoist',
     component: 'Todoist',
-    selected: true,
+    selected: false,
   },
 ];
 

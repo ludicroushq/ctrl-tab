@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     async request() {
-      const response = await fetch('https://api.ludicrous.xyz/v1/tab/github/index');
+      const response = await fetch('https://tab.api.ludicrous.xyz/v1/github/index');
       const data = await response.json();
       return data.repos;
     },

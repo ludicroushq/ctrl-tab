@@ -43,7 +43,7 @@ export default {
   methods: {
     timeAgo,
     async request() {
-      const response = await fetch('https://api.ludicrous.xyz/v1/tab/reddit/index');
+      const response = await fetch('https://tab.api.ludicrous.xyz/v1/reddit/index');
       const data = await response.json();
       return data.posts;
     },

@@ -107,60 +107,24 @@ export default {
       return;
     }
 
-    this.tasks = await this.handler(storage.token);
+    const { tasks } = await this.handler(storage.token);
+    this.tasks = tasks;
     this.oauthError = null;
     this.isLoading = false;
   },
   methods: {
     calendar,
     async handler(token) {
-      const itemsResponse = await fetch('https://todoist.com/api/v7/sync', {
+      const tasksResponse = await fetch('https://tab.api.ludicrous.xyz/v1/todoist/index', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
         },
         body: JSON.stringify({
           token,
-          sync_token: '*',
-          resource_types: ['items'],
         }),
       });
-
-      const itemsJSON = await itemsResponse.json();
-
-      const sortByDueDate = (item1, item2) => {
-        if (new Date(item1.due_date_utc) > new Date(item2.due_date_utc)) {
-          return 1;
-        }
-        if (new Date(item1.due_date_utc) < new Date(item2.due_date_utc)) {
-          return -1;
-        }
-        return 0;
-      };
-
-      const filterTodayTasks = (item) => {
-        const date = new Date(Date.now());
-        date.setDate(date.getDate() + 1);
-        date.setHours(0, 0, 0, 0);
-        return item.due_date_utc && new Date(item.due_date_utc) < date;
-      };
-
-      const serializeTasks = (item) => {
-        const due = new Date(item.due_date_utc);
-        if (item.all_day) {
-          due.setHours(0, 0, 0, 0);
-        }
-        return {
-          title: item.content,
-          due,
-          allDay: item.all_day,
-        };
-      };
-
-      return itemsJSON.items
-        .filter(filterTodayTasks)
-        .sort(sortByDueDate)
-        .map(serializeTasks);
+      return tasksResponse.json();
     },
     async login() {
       const scope = 'data:read_write';
@@ -202,7 +166,8 @@ export default {
       const tokenJSON = await tokenResponse.json();
       const { access_token: token } = tokenJSON;
 
-      this.tasks = await this.handler(token);
+      const { tasks } = await this.handler(token);
+      this.tasks = tasks;
       this.isLoading = false;
       storeData('todoist', { token });
     },
