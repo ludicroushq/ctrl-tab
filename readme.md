@@ -4,7 +4,7 @@
   <a href="https://travis-ci.org/ludicrousxyz/tab" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/travis/ludicrousxyz/tab.svg" alt="Build Status"></a>
 </p>
 
-Ludicrous Tab is a chrome extension (support for other browsers coming soon) that fetches feeds from external sources including Reddit, Hacker News, GitHub, and Product Hunt (more providers coming soon).
+Ludicrous tab is a chrome extension (support for other browsers coming soon) that fetches feeds from external sources including Reddit, Hacker News, GitHub, and Product Hunt (more providers coming soon).
 
 ## Screenshot
 ![Ludicrous Tab Screenshot](https://raw.githubusercontent.com/ludicrousxyz/tab/master/public/img/screenshot.png)
