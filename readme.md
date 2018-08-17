@@ -3,7 +3,7 @@
 Ludicrous Tab is a chrome extension (support for other browsers coming soon) that fetches feeds from external sources including Reddit, Hacker News, GitHub, and Product Hunt (more providers coming soon).
 
 ## Screenshot
-Coming soon
+![Ludicrous Tab Screenshot](https://raw.githubusercontent.com/ludicrousxyz/tab/master/public/img/screenshot.png)
 
 ## Contribute
 1. Clone the repository
