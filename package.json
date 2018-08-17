@@ -32,7 +32,8 @@
     "bulma": "^0.7.1",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.5.16",
+    "webpack-command": "^0.4.1"
   },
   "browserslist": [
     "> 1%",
