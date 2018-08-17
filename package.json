@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test": "npm run lint",
     "watch": "webpack --config ./node_modules/@vue/cli-service/webpack.config.js --watch",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
