@@ -22,6 +22,7 @@
         </div>
         <hr>
       </div>
+      <slot name="attribution"></slot>
       <div class="item" v-if="this.moreURL">
         <div class="has-text-centered subtitle is-6">
           <a

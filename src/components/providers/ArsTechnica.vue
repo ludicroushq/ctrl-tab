@@ -7,10 +7,17 @@
       <Message-Item :data="this.articles" :isLoading="this.isLoading" moreURL="https://arstechnica.com">
         <div class="subtitle is-7" slot-scope="article">
           {{ article.item.description }}<br style="line-height: 125%;">
-          <span class="is-capitalized">{{ article.item.author }}</span>
-          in {{ article.item.category }},
+          By {{ article.item.author }},
           {{ timeAgo(article.item.published) }}.
         </div>
+        <template slot="attribution">
+          <div class="item">
+            <div class="subtitle is-7 has-text-centered">
+              Feed Provided by <a href="https://newsapi.org" target="_blank" rel="noopener noreferrer">NewsAPI.org</a>.
+            </div>
+          </div>
+          <hr>
+        </template>
       </Message-Item>
     </Message-Body>
   </Message>
