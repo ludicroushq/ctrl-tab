@@ -42,7 +42,7 @@ import HackerNews from '@/components/providers/HackerNews.vue';
 import ProductHunt from '@/components/providers/ProductHunt.vue';
 import Github from '@/components/providers/Github.vue';
 import Reddit from '@/components/providers/Reddit.vue';
-import Todoist from '@/components/providers/Todoist.vue';
+// import Todoist from '@/components/providers/Todoist.vue';
 
 const providers = [
   {
@@ -65,11 +65,11 @@ const providers = [
     component: 'Github',
     selected: true,
   },
-  {
-    name: 'Todoist',
-    component: 'Todoist',
-    selected: false,
-  },
+  // {
+  //   name: 'Todoist',
+  //   component: 'Todoist',
+  //   selected: true,
+  // },
 ];
 
 export default {
@@ -80,7 +80,7 @@ export default {
     ProductHunt,
     Github,
     Reddit,
-    Todoist,
+    // Todoist,
     fab,
   },
 
