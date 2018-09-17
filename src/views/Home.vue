@@ -9,11 +9,11 @@
         </header>
         <section class="modal-card-body">
           <h1 class="title">Select Providers</h1>
-          <h2 class="subtitle">Up to 4. Drag on the homepage to reorder them.</h2>
+          <h2 class="subtitle">Up to 4. Drag the panels on the homepage to reorder them.</h2>
           <div class="subtitle is-marginless" v-if="this.providers.length >= 4">
             Unselect One to Continue
           </div>
-          <div class="subtitle is-marginless" v-else-if="this.providers.length <= 3">
+          <div class="subtitle is-marginless" v-else-if="this.providers.length <= 1">
             Select One to Continue
           </div>
           <hr>
@@ -143,7 +143,7 @@ export default {
 
     isDisabled(component) {
       return (!this.isChecked(component) && this.providers.length >= 4) ||
-        (this.isChecked(component) && this.providers.length <= 3);
+        (this.isChecked(component) && this.providers.length <= 1);
     },
   },
 
