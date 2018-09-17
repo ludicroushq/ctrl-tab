@@ -1,11 +1,11 @@
 <template>
   <Message>
-    <Message-Header background="#da552f" :isLoading="this.isFetching">
+    <Message-Header background="#da552f" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name">
       Product Hunt
     </Message-Header>
     <Message-Body>
       <div v-if="posts">
-        <Message-Item :data="this.posts" :isLoading="this.isLoading">
+        <Message-Item :data="this.posts" :isLoading="this.isLoading" moreURL="https://www.producthunt.com">
           <div class="subtitle is-7" slot-scope="post">
             {{ post.item.description }}<br style="line-height: 125%;">
             {{ post.item.votes.toLocaleString()}} votes by
@@ -16,18 +16,6 @@
             </a>
           </div>
         </Message-Item>
-        <div class="item">
-          <div class="has-text-centered subtitle is-6">
-            <a
-              href="https://www.producthunt.com"
-              class="hide-underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Read More...
-            </a>
-          </div>
-        </div>
       </div>
       <div v-else class="has-text-centered has-text-black">
         <br>Waiting for new posts...
@@ -47,6 +35,7 @@ import MessageItem from '@/components/message/MessageItem.vue';
 
 export default {
   name: 'ProductHunt',
+  props: ['edit', 'remove'],
   components: {
     Message,
     MessageHeader,
@@ -55,6 +44,7 @@ export default {
   },
   data() {
     return {
+      name: 'ProductHunt',
       posts: [],
       isLoading: true,
       isFetching: true,

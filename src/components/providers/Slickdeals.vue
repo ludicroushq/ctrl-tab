@@ -1,28 +1,16 @@
 <template>
   <Message>
-    <Message-Header background="#0072bc" :isLoading="this.isFetching">
-      Slickdeals Popular Deals
+    <Message-Header background="#0072bc" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name">
+      Slickdeals Popular
     </Message-Header>
     <Message-Body>
-      <Message-Item :data="this.deals" :isLoading="this.isLoading">
+      <Message-Item :data="this.deals" :isLoading="this.isLoading" moreURL="https://slickdeals.net">
         <div class="subtitle is-7" slot-scope="article">
           {{ article.item.description }}<br style="line-height: 125%;">
           in {{ article.item.category }},
           {{ timeAgo(article.item.published) }}.
         </div>
       </Message-Item>
-      <div class="item">
-        <div class="has-text-centered subtitle is-6">
-          <a
-            href="https://slickdeals.net"
-            class="hide-underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read More...
-          </a>
-        </div>
-      </div>
     </Message-Body>
   </Message>
 </template>
@@ -38,6 +26,7 @@ import MessageItem from '@/components/message/MessageItem.vue';
 
 export default {
   name: 'Slickdeals',
+  props: ['edit', 'remove'],
   components: {
     Message,
     MessageHeader,
@@ -46,6 +35,7 @@ export default {
   },
   data() {
     return {
+      name: 'Slickdeals',
       deals: [],
       isLoading: true,
       isFetching: true,

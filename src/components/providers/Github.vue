@@ -1,10 +1,10 @@
 <template>
   <Message>
-    <Message-Header background="#24292e" :isLoading="this.isFetching">
+    <Message-Header background="#24292e" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name">
       Github (Trending)
     </Message-Header>
     <Message-Body>
-      <Message-Item :data="this.repos" :isLoading="this.isLoading">
+      <Message-Item :data="this.repos" :isLoading="this.isLoading" moreURL="https://github.com/trending">
         <div class="subtitle is-7" slot-scope="repo">
           {{ repo.item.description }}<br style="line-height: 125%;">
           {{ repo.item.stars.toLocaleString() }} stars,
@@ -12,18 +12,6 @@
           {{ repo.item.language }}</span>
         </div>
       </Message-Item>
-      <div class="item">
-        <div class="has-text-centered subtitle is-6">
-          <a
-            href="https://github.com/trending"
-            class="hide-underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read More...
-          </a>
-        </div>
-      </div>
     </Message-Body>
   </Message>
 </template>
@@ -38,6 +26,7 @@ import MessageItem from '@/components/message/MessageItem.vue';
 
 export default {
   name: 'Github',
+  props: ['edit', 'remove'],
   components: {
     Message,
     MessageHeader,
@@ -46,6 +35,7 @@ export default {
   },
   data() {
     return {
+      name: 'Github',
       repos: [],
       isLoading: true,
       isFetching: true,

@@ -1,66 +1,60 @@
 <template>
   <section class="home">
-    <div :class="{ modal: true, 'is-active': settingsModal }">
+    <div :class="{ modal: true, 'is-active': addModal }">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Settings</p>
-          <button class="delete" aria-label="close" @click="closeSettingsModal"></button>
+          <p class="modal-card-title">Add Providers</p>
+          <button class="delete" aria-label="close" @click="hideAddModal"></button>
         </header>
         <section class="modal-card-body">
-          <h1 class="title">Select Providers</h1>
-          <h2 class="subtitle">Up to 4. Drag the panels on the homepage to reorder them.</h2>
-          <div class="subtitle is-marginless" v-if="this.providers.length >= 5">
-            Unselect One to Continue
-          </div>
-          <div class="subtitle is-marginless" v-else-if="this.providers.length <= 1">
-            Select One to Continue
-          </div>
-          <hr>
-          <div class="field" v-for="provider in this.allProviders" :key="provider.component">
-            <div class="control">
-              <label class="checkbox">
-                <input
-                  type="checkbox"
-                  @click="toggleProvider(provider.component)"
-                  :disabled="isDisabled(provider.component)"
-                  :checked="isChecked(provider.component)"
-                >
-                {{ provider.name }}
-              </label>
-            </div>
-          </div>
+          <h1 class="title">Personalize Your New Tab Page</h1>
+          <h2 class="subtitle">Show and hide data sources that matter to you. To edit their order, close this menu and drag and drop them.</h2>
+          <table class="table is-fullwidth is-striped is-bordered">
+            <tbody>
+              <tr v-for="provider in this.allProviders" :key="provider.component">
+                <td>
+                  {{ provider.name }}
+                  <div class="is-pulled-right">
+                    <a @click="remove(provider.component)" v-if="isAdded(provider.component)" class="button is-danger is-small">Remove</a>
+                    <a @click="add(provider.component)" v-else class="button is-success is-small">Add</a>&nbsp;&nbsp;
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success" @click="closeSettingsModal">Close</button>
+          <button class="button is-success" @click="hideAddModal">Close</button>
         </footer>
       </div>
     </div>
-    <fab
-      icon-size="small"
-      bg-color="#363636"
-      z-index="30"
-      main-tooltip="Drag the Panels to Reoder<br>Click to Configure"
-      :actions="fabActions"
-      @settings="openSettingsModal"
-    ></fab>
-    <draggable class="columns" :list="this.providers" @end="onEnd">
+    <Fab :edit="this.edit" :toggleEdit="toggleEdit" :add="this.showAddModal" />
+    <div v-if="!this.providers.length">
+      <div class="columns is-vcentered" style="height: 96vh;">
+        <div class="column has-text-centered">
+          <h1 class="title">Hello World!</h1>
+          <h2 class="subtitle">To get started, press the + sign in the bottom right.</h2>
+        </div>
+      </div>
+    </div>
+    <draggable v-else class="columns" :list="this.providers" @end="onEnd">
       <div
         class="column"
         v-for="provider in this.providers"
         :key="provider.title"
       >
-        <component :is="provider.component"></component>
+        <component :is="provider.component" :edit="edit" :remove="remove"></component>
       </div>
     </draggable>
   </section>
 </template>
 
 <script>
-import fab from 'vue-fab';
 import draggable from 'vuedraggable';
 
 import { getData, storeData } from '@/utils/local-storage';
+import Fab from '@/components/Fab.vue';
 import HackerNews from '@/components/providers/HackerNews.vue';
 import ProductHunt from '@/components/providers/ProductHunt.vue';
 import Github from '@/components/providers/Github.vue';
@@ -116,68 +110,55 @@ export default {
     NewYorkTimes,
     Slickdeals,
     // Todoist,
-    fab,
+    Fab,
     draggable,
   },
 
   methods: {
-    openSettingsModal() {
-      this.settingsModal = true;
+    showAddModal() {
+      this.addModal = true;
     },
 
-    closeSettingsModal() {
-      this.settingsModal = false;
+    hideAddModal() {
+      this.addModal = false;
     },
 
     onEnd() {
       storeData('providers', this.providers);
     },
 
-    toggleProvider(component) {
-      const provider = this.providers.find(obj => obj.component === component);
-      if (!provider) {
-        this.providers.push(this.allProviders.find(obj => obj.component === component));
-        return storeData('providers', this.providers);
-      }
-      this.providers = this.providers.filter(obj => obj.component !== component);
-      return storeData('providers', this.providers);
+    add(component) {
+      const provider = this.allProviders.find(obj => obj.component === component);
+      this.providers.push(provider);
+      storeData('providers', this.providers);
     },
 
-    isChecked(component) {
+    remove(component) {
+      this.providers = this.providers.filter(obj => obj.component !== component);
+      storeData('providers', this.providers);
+    },
+
+    isAdded(component) {
       return this.providers.find(obj => obj.component === component);
     },
 
-    isDisabled(component) {
-      return (!this.isChecked(component) && this.providers.length >= 5) ||
-        (this.isChecked(component) && this.providers.length <= 1);
+    toggleEdit() {
+      this.edit = !this.edit;
     },
   },
 
   data() {
     let providers = getData('providers');
     if (!providers) {
-      providers = allProviders.filter(provider => provider.default);
+      providers = [];
       storeData('providers', providers);
     }
     return {
       allProviders,
       providers,
-      settingsModal: false,
-      fabActions: [
-        {
-          name: 'settings',
-          icon: 'settings',
-          color: '#3f51b5',
-        },
-      ],
+      addModal: false,
+      edit: !providers.length,
     };
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.fab-wrapper {
-  right: 1vw !important;
-  bottom: 1vh !important;
-}
-</style>

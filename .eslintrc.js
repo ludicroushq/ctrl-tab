@@ -13,5 +13,13 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint'
-  }
+  },
+  overrides: [
+    {
+      files: ["*.vue"],
+      rules: {
+        'max-len': 'off',
+      },
+    }
+  ],
 }

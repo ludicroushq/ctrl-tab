@@ -1,10 +1,10 @@
 <template>
   <Message>
-    <Message-Header background="#1976d2" :isLoading="this.isFetching">
+    <Message-Header background="#1976d2" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name">
       Reddit (/r/all)
     </Message-Header>
     <Message-Body>
-      <Message-Item :data="this.articles" :isLoading="this.isLoading">
+      <Message-Item :data="this.articles" :isLoading="this.isLoading" moreURL="https://www.reddit.com/r/all">
         <div class="subtitle is-7" slot-scope="article">
           {{ article.item.score.toLocaleString()}} points by
           <a :href="`https://www.reddit.com/u/${article.item.author}`" class="hide-underline" target="_blank" rel="noopener noreferrer">{{ article.item.author }}</a>
@@ -13,18 +13,6 @@
           <a :href="`https://www.reddit.com${article.item.permalink}`" target="_blank" rel="noopener noreferrer">{{ article.item.comments.toLocaleString() }} comments.</a>
         </div>
       </Message-Item>
-      <div class="item">
-        <div class="has-text-centered subtitle is-6">
-          <a
-            href="https://www.reddit.com/r/all"
-            class="hide-underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read More...
-          </a>
-        </div>
-      </div>
     </Message-Body>
   </Message>
 </template>
@@ -40,6 +28,7 @@ import MessageItem from '@/components/message/MessageItem.vue';
 
 export default {
   name: 'Reddit',
+  props: ['edit', 'remove'],
   components: {
     Message,
     MessageHeader,
@@ -48,6 +37,7 @@ export default {
   },
   data() {
     return {
+      name: 'Reddit',
       articles: [],
       isLoading: true,
       isFetching: true,

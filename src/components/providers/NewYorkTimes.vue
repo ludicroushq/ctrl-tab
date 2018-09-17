@@ -1,10 +1,10 @@
 <template>
   <Message>
-    <Message-Header background="#000000" :isLoading="this.isFetching">
+    <Message-Header background="#000000" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name">
       New York Times
     </Message-Header>
     <Message-Body>
-      <Message-Item :data="this.articles" :isLoading="this.isLoading">
+      <Message-Item :data="this.articles" :isLoading="this.isLoading" moreURL="https://www.nytimes.com">
         <div class="subtitle is-7" slot-scope="article">
           {{ article.item.description }}<br style="line-height: 125%;">
           <span class="is-capitalized">{{ article.item.author }}</span>
@@ -12,18 +12,6 @@
           {{ timeAgo(article.item.published) }}.
         </div>
       </Message-Item>
-      <div class="item">
-        <div class="has-text-centered subtitle is-6">
-          <a
-            href="https://www.nytimes.com"
-            class="hide-underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read More...
-          </a>
-        </div>
-      </div>
     </Message-Body>
   </Message>
 </template>
@@ -39,6 +27,7 @@ import MessageItem from '@/components/message/MessageItem.vue';
 
 export default {
   name: 'NewYorkTimes',
+  props: ['edit', 'remove'],
   components: {
     Message,
     MessageHeader,
@@ -47,6 +36,7 @@ export default {
   },
   data() {
     return {
+      name: 'NewYorkTimes',
       articles: [],
       isLoading: true,
       isFetching: true,
