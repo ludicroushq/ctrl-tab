@@ -42,6 +42,7 @@ import HackerNews from '@/components/providers/HackerNews.vue';
 import ProductHunt from '@/components/providers/ProductHunt.vue';
 import Github from '@/components/providers/Github.vue';
 import Reddit from '@/components/providers/Reddit.vue';
+import NewYorkTimes from '@/components/providers/NewYorkTimes.vue';
 // import Todoist from '@/components/providers/Todoist.vue';
 
 const providers = [
@@ -65,6 +66,11 @@ const providers = [
     component: 'Github',
     selected: true,
   },
+  {
+    name: 'New York Times',
+    component: 'NewYorkTimes',
+    selected: true,
+  },
   // {
   //   name: 'Todoist',
   //   component: 'Todoist',
@@ -80,6 +86,7 @@ export default {
     ProductHunt,
     Github,
     Reddit,
+    NewYorkTimes,
     // Todoist,
     fab,
   },
