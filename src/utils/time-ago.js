@@ -1,12 +1,6 @@
 import moment from 'moment';
 
-export const timeAgo = (time, config = { unix: true }) => {
-  const { unix } = config;
-  if (unix) {
-    return moment.unix(time).fromNow();
-  }
-  return moment(time).fromNow();
-};
+export const timeAgo = time => moment(time).fromNow();
 
 export const calendar = (time, config = { noTime: true }) => {
   const { noTime } = config;

@@ -10,7 +10,7 @@
             {{ post.item.description }}<br style="line-height: 125%;">
             {{ post.item.votes.toLocaleString()}} votes by
             <a :href="`https://www.producthunt.com/@${post.item.author}`" class="hide-underline" target="_blank" rel="noopener noreferrer">@{{ post.item.author }}</a>,
-            {{ timeAgo(post.item.created, { unix: false }) }}.
+            {{ timeAgo(post.item.created) }}.
             <a :href="post.item.commentsURL" target="_blank" rel="noopener noreferrer">
               View comments.
             </a>

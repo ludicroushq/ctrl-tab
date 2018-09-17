@@ -8,7 +8,7 @@
         <div class="subtitle is-7" slot-scope="article">
           {{ article.item.score.toLocaleString()}} points by
           <a :href="`https://www.reddit.com/u/${article.item.author}`" class="hide-underline" target="_blank" rel="noopener noreferrer">{{ article.item.author }}</a>
-          on <a :href="`https://www.reddit.com${article.item.subreddit}`" class="hide-underline" target="_blank" rel="noopener noreferrer">{{ article.item.subreddit }}</a>,
+          in <a :href="`https://www.reddit.com${article.item.subreddit}`" class="hide-underline" target="_blank" rel="noopener noreferrer">{{ article.item.subreddit }}</a>,
           {{ timeAgo(article.item.created) }}.
           <a :href="`https://www.reddit.com${article.item.permalink}`" target="_blank" rel="noopener noreferrer">{{ article.item.comments.toLocaleString() }} comments.</a>
         </div>
