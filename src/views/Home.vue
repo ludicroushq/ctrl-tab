@@ -66,6 +66,7 @@ import ProductHunt from '@/components/providers/ProductHunt.vue';
 import Github from '@/components/providers/Github.vue';
 import Reddit from '@/components/providers/Reddit.vue';
 import NewYorkTimes from '@/components/providers/NewYorkTimes.vue';
+import Slickdeals from '@/components/providers/Slickdeals.vue';
 // import Todoist from '@/components/providers/Todoist.vue';
 
 const allProviders = [
@@ -85,13 +86,17 @@ const allProviders = [
     default: true,
   },
   {
+    name: 'New York Times',
+    component: 'NewYorkTimes',
+    default: true,
+  },
+  {
     name: 'Github',
     component: 'Github',
   },
   {
-    name: 'New York Times',
-    component: 'NewYorkTimes',
-    default: true,
+    name: 'Slickdeals',
+    component: 'Slickdeals',
   },
   // {
   //   name: 'Todoist',
@@ -109,6 +114,7 @@ export default {
     Github,
     Reddit,
     NewYorkTimes,
+    Slickdeals,
     // Todoist,
     fab,
     draggable,
