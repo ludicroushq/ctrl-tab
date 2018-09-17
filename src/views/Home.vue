@@ -61,6 +61,7 @@ import Github from '@/components/providers/Github.vue';
 import Reddit from '@/components/providers/Reddit.vue';
 import NewYorkTimes from '@/components/providers/NewYorkTimes.vue';
 import Slickdeals from '@/components/providers/Slickdeals.vue';
+import ArsTechnica from '@/components/providers/ArsTechnica.vue';
 // import Todoist from '@/components/providers/Todoist.vue';
 
 const allProviders = [
@@ -92,6 +93,10 @@ const allProviders = [
     name: 'Slickdeals',
     component: 'Slickdeals',
   },
+  {
+    name: 'ArsTechnica',
+    component: 'ArsTechnica',
+  },
   // {
   //   name: 'Todoist',
   //   component: 'Todoist',
@@ -109,6 +114,7 @@ export default {
     Reddit,
     NewYorkTimes,
     Slickdeals,
+    ArsTechnica,
     // Todoist,
     Fab,
     draggable,
