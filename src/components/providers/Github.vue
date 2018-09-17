@@ -12,6 +12,18 @@
           {{ repo.item.language }}</span>
         </div>
       </Message-Item>
+      <div class="item">
+        <div class="has-text-centered subtitle is-6">
+          <a
+            href="https://github.com/trending"
+            class="hide-underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Read More...
+          </a>
+        </div>
+      </div>
     </Message-Body>
   </Message>
 </template>

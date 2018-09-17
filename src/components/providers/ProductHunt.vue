@@ -4,19 +4,33 @@
       Product Hunt
     </Message-Header>
     <Message-Body>
-      <Message-Item v-if="posts" :data="this.posts" :isLoading="this.isLoading">
-        <div class="subtitle is-7" slot-scope="post">
-          {{ post.item.description }}<br style="line-height: 125%;">
-          {{ post.item.votes.toLocaleString()}} votes by
-          <a :href="`https://www.producthunt.com/@${post.item.author}`" class="hide-underline" target="_blank" rel="noopener noreferrer">@{{ post.item.author }}</a>,
-          {{ timeAgo(post.item.created, { unix: false }) }}.
-          <a :href="post.item.commentsURL" target="_blank" rel="noopener noreferrer">
-            View comments.
-          </a>
+      <div v-if="posts">
+        <Message-Item :data="this.posts" :isLoading="this.isLoading">
+          <div class="subtitle is-7" slot-scope="post">
+            {{ post.item.description }}<br style="line-height: 125%;">
+            {{ post.item.votes.toLocaleString()}} votes by
+            <a :href="`https://www.producthunt.com/@${post.item.author}`" class="hide-underline" target="_blank" rel="noopener noreferrer">@{{ post.item.author }}</a>,
+            {{ timeAgo(post.item.created, { unix: false }) }}.
+            <a :href="post.item.commentsURL" target="_blank" rel="noopener noreferrer">
+              View comments.
+            </a>
+          </div>
+        </Message-Item>
+        <div class="item">
+          <div class="has-text-centered subtitle is-6">
+            <a
+              href="https://www.producthunt.com"
+              class="hide-underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read More...
+            </a>
+          </div>
         </div>
-      </Message-Item>
+      </div>
       <div v-else class="has-text-centered has-text-black">
-        <br>Coming Soon
+        <br>Waiting for new posts...
       </div>
     </Message-Body>
   </Message>

@@ -13,6 +13,18 @@
           <a :href="`https://www.reddit.com${article.item.permalink}`" target="_blank" rel="noopener noreferrer">{{ article.item.comments.toLocaleString() }} comments.</a>
         </div>
       </Message-Item>
+      <div class="item">
+        <div class="has-text-centered subtitle is-6">
+          <a
+            href="https://www.reddit.com/r/all"
+            class="hide-underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Read More...
+          </a>
+        </div>
+      </div>
     </Message-Body>
   </Message>
 </template>

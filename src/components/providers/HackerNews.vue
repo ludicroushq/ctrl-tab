@@ -11,6 +11,18 @@
           {{ timeAgo(article.item.time) }}. <a :href="`https://news.ycombinator.com/item?id=${article.item.id}`" target="_blank" rel="noopener noreferrer" v-if="!isNaN(article.item.comments)">{{ article.item.comments.toLocaleString() }} comments.</a>
         </div>
       </Message-Item>
+      <div class="item">
+        <div class="has-text-centered subtitle is-6">
+          <a
+            href="https://news.ycombinator.com"
+            class="hide-underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Read More...
+          </a>
+        </div>
+      </div>
     </Message-Body>
   </Message>
 </template>
