@@ -115,7 +115,7 @@ export default {
   methods: {
     calendar,
     async handler(token) {
-      const tasksResponse = await fetch('https://tab.api.ludicrous.xyz/v1/todoist/index', {
+      const tasksResponse = await fetch('https://api.tab.ludicrous.xyz/v1/todoist/index', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
