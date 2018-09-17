@@ -15,7 +15,7 @@
       <div class="item">
         <div class="has-text-centered subtitle is-6">
           <a
-            href="https://www.reddit.com/r/all"
+            href="https://www.nytimes.com"
             class="hide-underline"
             target="_blank"
             rel="noopener noreferrer"
