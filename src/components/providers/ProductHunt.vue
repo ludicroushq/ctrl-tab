@@ -1,6 +1,6 @@
 <template>
   <Message>
-    <Message-Header background="#da552f">
+    <Message-Header background="#da552f" :isLoading="this.isFetching">
       Product Hunt
     </Message-Header>
     <Message-Body>
@@ -43,6 +43,7 @@ export default {
     return {
       posts: [],
       isLoading: true,
+      isFetching: true,
     };
   },
   methods: {
@@ -50,6 +51,7 @@ export default {
     async request() {
       const response = await fetch('https://tab.api.ludicrous.xyz/v1/product-hunt/index');
       const data = await response.json();
+      this.isFetching = false;
       return data.posts;
     },
     async handler() {

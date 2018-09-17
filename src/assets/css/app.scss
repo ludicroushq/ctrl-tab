@@ -10,6 +10,22 @@ $link: $indigo;
 
 @import '~bulma/bulma.sass';
 
+.is-loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.75;
+  &:after {
+    @include loader;
+    border-color: transparent transparent #ffffff #ffffff !important;
+    position: absolute;
+    top: calc(50% - 0.5em);
+    left: calc(50% - 0.5em);
+    width: 1em;
+    height: 1em;
+    border-width: 0.1em;
+  }
+}
+
 $material-icons-font-path: '~material-icons/iconfont/';
 @import '~material-icons/iconfont/material-icons.scss';
 

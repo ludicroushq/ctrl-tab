@@ -1,6 +1,6 @@
 <template>
   <Message>
-    <Message-Header background="#24292e">
+    <Message-Header background="#24292e" :isLoading="this.isFetching">
       Github (Trending)
     </Message-Header>
     <Message-Body>
@@ -36,12 +36,14 @@ export default {
     return {
       repos: [],
       isLoading: true,
+      isFetching: true,
     };
   },
   methods: {
     async request() {
       const response = await fetch('https://tab.api.ludicrous.xyz/v1/github/index');
       const data = await response.json();
+      this.isFetching = false;
       return data.repos;
     },
     async handler() {

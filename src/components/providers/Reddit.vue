@@ -1,6 +1,6 @@
 <template>
   <Message>
-    <Message-Header background="#1976d2">
+    <Message-Header background="#1976d2" :isLoading="this.isFetching">
       Reddit (/r/all)
     </Message-Header>
     <Message-Body>
@@ -38,6 +38,7 @@ export default {
     return {
       articles: [],
       isLoading: true,
+      isFetching: true,
     };
   },
   methods: {
@@ -45,6 +46,7 @@ export default {
     async request() {
       const response = await fetch('https://tab.api.ludicrous.xyz/v1/reddit/index');
       const data = await response.json();
+      this.isFetching = false;
       return data.posts;
     },
     async handler() {

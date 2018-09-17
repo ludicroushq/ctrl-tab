@@ -1,6 +1,6 @@
 <template>
   <Message>
-    <Message-Header background="#ff6600">
+    <Message-Header background="#ff6600" :isLoading="this.isFetching">
       Hacker News
     </Message-Header>
     <Message-Body>
@@ -36,6 +36,7 @@ export default {
     return {
       articles: [],
       isLoading: true,
+      isFetching: true,
     };
   },
   methods: {
@@ -43,6 +44,7 @@ export default {
     async request() {
       const response = await fetch('https://tab.api.ludicrous.xyz/v1/hacker-news/index');
       const data = await response.json();
+      this.isFetching = false;
       return data.posts;
     },
     async handler() {
