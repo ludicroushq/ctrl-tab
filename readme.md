@@ -24,4 +24,4 @@ npm run watch
 4. Add the chrome extension by going to [chrome://extensions](chrome://extensions/), enabling developer mode, and pressing the load unpacked extension. Select the `dist` directory in the folder
 
 ### Server
-All server related code is in the [tab.api](https://github.com/ludicrousxyz/tab.api) repository.
+All server related code is in the [tab.api](https://github.com/ludicrousxyz/tab-api) repository.
