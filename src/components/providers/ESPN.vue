@@ -1,10 +1,10 @@
 <template>
   <Message>
-    <Message-Header background="#ff4e00" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name">
-      Ars Technica
+    <Message-Header background="#d00d00" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name">
+      ESPN
     </Message-Header>
     <Message-Body>
-      <Message-Item :data="this.articles" :isLoading="this.isLoading" moreURL="https://arstechnica.com">
+      <Message-Item :data="this.articles" :isLoading="this.isLoading" moreURL="http://www.espn.com">
         <div class="subtitle is-7" slot-scope="article">
           {{ article.item.description }}<br style="line-height: 125%;">
           <span v-if="article.item.author">By {{ article.item.author }},</span>
@@ -33,7 +33,7 @@ import MessageBody from '@/components/message/MessageBody.vue';
 import MessageItem from '@/components/message/MessageItem.vue';
 
 export default {
-  name: 'ArsTechnica',
+  name: 'ESPN',
   props: ['edit', 'remove'],
   components: {
     Message,
@@ -43,7 +43,7 @@ export default {
   },
   data() {
     return {
-      name: 'ArsTechnica',
+      name: 'ESPN',
       articles: [],
       isLoading: true,
       isFetching: true,
@@ -52,7 +52,7 @@ export default {
   methods: {
     timeAgo,
     async request() {
-      const response = await fetch('https://api.tab.ludicrous.xyz/v1/ars-technica/index');
+      const response = await fetch('https://api.tab.ludicrous.xyz/v1/espn/index');
       const data = await response.json();
       this.isFetching = false;
       return data.articles;
@@ -61,14 +61,14 @@ export default {
       const data = await this.request();
       this.articles = data;
       this.isLoading = false;
-      storeData('ars-technica', {
+      storeData('espn', {
         data,
         createdAt: Date.now(),
       });
     },
   },
   created() {
-    const storage = getData('ars-technica');
+    const storage = getData('espn');
     if (storage) {
       this.articles = storage.data;
       this.isLoading = false;

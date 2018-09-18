@@ -61,7 +61,22 @@ import Github from '@/components/providers/Github.vue';
 import Reddit from '@/components/providers/Reddit.vue';
 import NewYorkTimes from '@/components/providers/NewYorkTimes.vue';
 import Slickdeals from '@/components/providers/Slickdeals.vue';
+
 import ArsTechnica from '@/components/providers/ArsTechnica.vue';
+import ABCNews from '@/components/providers/ABCNews.vue';
+import BBCNews from '@/components/providers/BBCNews.vue';
+import Bloomberg from '@/components/providers/Bloomberg.vue';
+import CCN from '@/components/providers/CCN.vue';
+import CNN from '@/components/providers/CNN.vue';
+import ESPN from '@/components/providers/ESPN.vue';
+import ESPNCricInfo from '@/components/providers/ESPNCricInfo.vue';
+import FoxNews from '@/components/providers/FoxNews.vue';
+import GoogleNews from '@/components/providers/GoogleNews.vue';
+import Mashable from '@/components/providers/Mashable.vue';
+import TechCrunch from '@/components/providers/TechCrunch.vue';
+import TheVerge from '@/components/providers/TheVerge.vue';
+import Wired from '@/components/providers/Wired.vue';
+import TheTimesOfIndia from '@/components/providers/TheTimesOfIndia.vue';
 // import Todoist from '@/components/providers/Todoist.vue';
 
 const allProviders = [
@@ -97,6 +112,62 @@ const allProviders = [
     name: 'ArsTechnica',
     component: 'ArsTechnica',
   },
+  {
+    name: 'ABCNews',
+    component: 'ABCNews',
+  },
+  {
+    name: 'BBCNews',
+    component: 'BBCNews',
+  },
+  {
+    name: 'Bloomberg',
+    component: 'Bloomberg',
+  },
+  {
+    name: 'Crypto Coins News',
+    component: 'CCN',
+  },
+  {
+    name: 'CNN',
+    component: 'CNN',
+  },
+  {
+    name: 'ESPN',
+    component: 'ESPN',
+  },
+  {
+    name: 'ESPN Cric Info',
+    component: 'ESPNCricInfo',
+  },
+  {
+    name: 'Fox News',
+    component: 'FoxNews',
+  },
+  {
+    name: 'Google News',
+    component: 'GoogleNews',
+  },
+  {
+    name: 'Mashable',
+    component: 'Mashable',
+  },
+  {
+    name: 'TechCrunch',
+    component: 'TechCrunch',
+  },
+  {
+    name: 'The Verge',
+    component: 'TheVerge',
+  },
+  {
+    name: 'Wired',
+    component: 'Wired',
+  },
+  {
+    name: 'The Times Of India',
+    component: 'TheTimesOfIndia',
+  },
   // {
   //   name: 'Todoist',
   //   component: 'Todoist',
@@ -114,7 +185,23 @@ export default {
     Reddit,
     NewYorkTimes,
     Slickdeals,
+
     ArsTechnica,
+    ABCNews,
+    BBCNews,
+    Bloomberg,
+    CCN,
+    CNN,
+    ESPN,
+    ESPNCricInfo,
+    FoxNews,
+    GoogleNews,
+    Mashable,
+    TechCrunch,
+    TheVerge,
+    Wired,
+    TheTimesOfIndia,
+
     // Todoist,
     Fab,
     draggable,
