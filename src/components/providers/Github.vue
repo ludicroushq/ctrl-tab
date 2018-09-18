@@ -1,7 +1,7 @@
 <template>
   <Message>
     <Message-Header background="#24292e" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name">
-      Github (Trending)
+      Github
     </Message-Header>
     <Message-Body>
       <Message-Item :data="this.repos" :isLoading="this.isLoading" moreURL="https://github.com/trending">

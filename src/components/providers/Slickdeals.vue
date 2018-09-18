@@ -1,7 +1,7 @@
 <template>
   <Message>
     <Message-Header background="#0072bc" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name">
-      Slickdeals Popular
+      Slickdeals
     </Message-Header>
     <Message-Body>
       <Message-Item :data="this.deals" :isLoading="this.isLoading" moreURL="https://slickdeals.net">
