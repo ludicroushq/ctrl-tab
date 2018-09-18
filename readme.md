@@ -1,4 +1,4 @@
-<h1 align="center">Ludicrous Tab <small>(Work in Progress)</small></h1>
+<h1 align="center">Ludicrous Tab</h1>
 
 <p align="center">
   <a href="https://travis-ci.org/ludicrousxyz/tab" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/travis/ludicrousxyz/tab.svg" alt="Build Status"></a>

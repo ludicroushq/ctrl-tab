@@ -35,6 +35,7 @@
         <div class="column has-text-centered">
           <h1 class="title">Hello World!</h1>
           <h2 class="subtitle">To get started, press the + sign in the bottom right.</h2>
+          <h2 class="subtitle is-7">Please Note: Ludicrous Tab is currently in BETA. Please report any issues you find on <a href="https://github.com/ludicrousxyz/tab" target="_blank" rel="noopener noreferrer">GitHub</a>.</h2>
         </div>
       </div>
     </div>

@@ -1,5 +1,10 @@
 <template>
   <div>
+    <a href="https://github.com/ludicrousxyz/tab" target="_blank" rel="noopener noreferrer">
+      <button v-if="this.edit" class="button help is-medium is-black is-rounded">
+        ?
+      </button>
+    </a>
     <button v-if="this.edit" @click="this.add" class="button add is-medium is-danger is-rounded">
       <span class="icon">
         <i class="material-icons">add</i>
@@ -41,5 +46,13 @@ button {
   width: 2.5em;
   bottom: 4.25em;
   right: 1.25em;
+}
+
+.help {
+  height: 2.5em;
+  width: 2.5em;
+  bottom: 7em;
+  right: 1.25em;
+  color: white;
 }
 </style>
