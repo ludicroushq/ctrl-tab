@@ -1,0 +1,114 @@
+{
+  "providers": [
+    {
+      "name": "Reddit",
+      "component": "Reddit",
+      "category": "Social Networking"
+    },
+    {
+      "name": "Product Hunt",
+      "component": "ProductHunt",
+      "category": "Technology"
+    },
+    {
+      "name": "Hacker News",
+      "component": "HackerNews",
+      "category": "Technology"
+    },
+    {
+      "name": "New York Times",
+      "component": "NewYorkTimes",
+      "category": "News"
+    },
+    {
+      "name": "Github",
+      "component": "Github",
+      "category": "Technology"
+    },
+    {
+      "name": "Slickdeals",
+      "component": "Slickdeals",
+      "category": "Shopping"
+    },
+    {
+      "name": "Ars Technica",
+      "component": "ArsTechnica",
+      "category": "News"
+    },
+    {
+      "name": "ABC News",
+      "component": "ABCNews",
+      "category": "News"
+    },
+    {
+      "name": "BBC News",
+      "component": "BBCNews",
+      "category": "News"
+    },
+    {
+      "name": "Bloomberg",
+      "component": "Bloomberg",
+      "category": "News"
+    },
+    {
+      "name": "Crypto Coins News",
+      "component": "CCN",
+      "category": "News"
+    },
+    {
+      "name": "CNN",
+      "component": "CNN",
+      "category": "News"
+    },
+    {
+      "name": "ESPN",
+      "component": "ESPN",
+      "category": "News"
+    },
+    {
+      "name": "ESPN Cric Info",
+      "component": "ESPNCricInfo",
+      "category": "News"
+    },
+    {
+      "name": "Fox News",
+      "component": "FoxNews",
+      "category": "News"
+    },
+    {
+      "name": "Google News",
+      "component": "GoogleNews",
+      "category": "News"
+    },
+    {
+      "name": "Mashable",
+      "component": "Mashable",
+      "category": "News"
+    },
+    {
+      "name": "TechCrunch",
+      "component": "TechCrunch",
+      "category": "News"
+    },
+    {
+      "name": "The Verge",
+      "component": "TheVerge",
+      "category": "News"
+    },
+    {
+      "name": "Wired",
+      "component": "Wired",
+      "category": "News"
+    },
+    {
+      "name": "The Times Of India",
+      "component": "TheTimesOfIndia",
+      "category": "News"
+    },
+    {
+      "name": "Todoist",
+      "component": "Todoist",
+      "category": "Productivity"
+    }
+  ]
+}

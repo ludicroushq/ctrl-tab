@@ -78,103 +78,11 @@ import TechCrunch from '@/components/providers/TechCrunch.vue';
 import TheVerge from '@/components/providers/TheVerge.vue';
 import Wired from '@/components/providers/Wired.vue';
 import TheTimesOfIndia from '@/components/providers/TheTimesOfIndia.vue';
-// import Todoist from '@/components/providers/Todoist.vue';
+import Todoist from '@/components/providers/Todoist.vue';
 
-const allProviders = [
-  {
-    name: 'Reddit',
-    component: 'Reddit',
-    default: true,
-  },
-  {
-    name: 'Product Hunt',
-    component: 'ProductHunt',
-    default: true,
-  },
-  {
-    name: 'Hacker News',
-    component: 'HackerNews',
-    default: true,
-  },
-  {
-    name: 'New York Times',
-    component: 'NewYorkTimes',
-    default: true,
-  },
-  {
-    name: 'Github',
-    component: 'Github',
-  },
-  {
-    name: 'Slickdeals',
-    component: 'Slickdeals',
-  },
-  {
-    name: 'ArsTechnica',
-    component: 'ArsTechnica',
-  },
-  {
-    name: 'ABCNews',
-    component: 'ABCNews',
-  },
-  {
-    name: 'BBCNews',
-    component: 'BBCNews',
-  },
-  {
-    name: 'Bloomberg',
-    component: 'Bloomberg',
-  },
-  {
-    name: 'Crypto Coins News',
-    component: 'CCN',
-  },
-  {
-    name: 'CNN',
-    component: 'CNN',
-  },
-  {
-    name: 'ESPN',
-    component: 'ESPN',
-  },
-  {
-    name: 'ESPN Cric Info',
-    component: 'ESPNCricInfo',
-  },
-  {
-    name: 'Fox News',
-    component: 'FoxNews',
-  },
-  {
-    name: 'Google News',
-    component: 'GoogleNews',
-  },
-  {
-    name: 'Mashable',
-    component: 'Mashable',
-  },
-  {
-    name: 'TechCrunch',
-    component: 'TechCrunch',
-  },
-  {
-    name: 'The Verge',
-    component: 'TheVerge',
-  },
-  {
-    name: 'Wired',
-    component: 'Wired',
-  },
-  {
-    name: 'The Times Of India',
-    component: 'TheTimesOfIndia',
-  },
-  // {
-  //   name: 'Todoist',
-  //   component: 'Todoist',
-  //   selected: true,
-  // },
-];
+import providersList from '@/../public/providers.json';
+
+const allProviders = providersList.providers;
 
 export default {
   name: 'Home',
@@ -203,7 +111,8 @@ export default {
     Wired,
     TheTimesOfIndia,
 
-    // Todoist,
+    Todoist,
+
     Fab,
     draggable,
   },

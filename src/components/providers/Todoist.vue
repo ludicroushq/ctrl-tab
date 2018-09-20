@@ -1,10 +1,10 @@
 <template>
   <Message>
-    <Message-Header background="#db4c3f">
-      Todoist (Today)
+    <Message-Header background="#db4c3f" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name">
+      Todoist BETA
     </Message-Header>
     <Message-Body>
-      <div class="has-text-centered content" v-if="!this.authenticated">
+      <div class="has-text-centered content" v-if="!this.authenticated && !this.isLoading">
         <br>
         <a class="button is-success" @click="login">Log in with Todoist</a>
         <p class="has-text-danger subtitle" v-if="this.oauthError">
@@ -12,21 +12,10 @@
           {{ this.oauthError }}
         </p>
       </div>
-      <Message-Item
-        :isLoading="this.isLoading"
-        :data="this.tasks"
-        v-else-if="this.tasks.length > 0"
-      >
+      <Message-Item v-else-if="(this.tasks && this.tasks.length > 0) || this.isLoading" :isLoading="this.isLoading" :data="this.tasks">
         <template slot="title" slot-scope="task">
           <div class="title is-6">
-            <a
-              :href="task.item.url"
-              class="hide-underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {{ task.item.title }}
-            </a>
+            {{ task.item.title }}
           </div>
         </template>
         <div class="subtitle is-7" slot-scope="task">
@@ -84,6 +73,7 @@ const authenticate = (url, options = {}) => new Promise((resolve, reject) => {
 
 export default {
   name: 'Todoist',
+  props: ['edit', 'remove'],
   components: {
     Message,
     MessageHeader,
@@ -92,30 +82,18 @@ export default {
   },
   data() {
     return {
+      name: 'Todoist',
       oauthError: null,
       isLoading: true,
+      isFetching: true,
       authenticated: true,
       tasks: [],
     };
   },
-  async created() {
-    const storage = getData('todoist') || {};
-
-    if (!storage.token) {
-      this.authenticated = false;
-      this.isLoading = false;
-      return;
-    }
-
-    const { tasks } = await this.handler(storage.token);
-    this.tasks = tasks;
-    this.oauthError = null;
-    this.isLoading = false;
-  },
   methods: {
     calendar,
-    async handler(token) {
-      const tasksResponse = await fetch('https://api.tab.ludicrous.xyz/v1/todoist/index', {
+    async request(token) {
+      const response = await fetch('https://api.tab.ludicrous.xyz/v1/todoist/index', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
@@ -124,9 +102,22 @@ export default {
           token,
         }),
       });
-      return tasksResponse.json();
+      const data = await response.json();
+      this.isFetching = false;
+      return data.tasks;
+    },
+    async handler(token) {
+      const data = await this.request(token);
+      this.tasks = data;
+      this.isLoading = false;
+      storeData('todoist', {
+        token,
+        data,
+        createdAt: Date.now(),
+      });
     },
     async login() {
+      this.isLoading = true;
       const scope = 'data:read_write';
       const clientID = 'a5a726755f4e4f33bf1876daaeef3d3e';
       const authenticateSecret = uuidv4();
@@ -137,15 +128,16 @@ export default {
         code = await authenticate(authenticateURL, { secret: authenticateSecret });
       } catch (err) {
         this.oauthError = err.message;
+        this.isLoading = false;
         return;
       }
 
       if (!code) {
         this.oauthError = 'There was an unknown error signing you in. Please try again later.';
+        this.isLoading = false;
         return;
       }
 
-      this.isLoading = true;
       this.oauthError = null;
 
       const clientSecret = '1be07b96e0384e0d9df19e1ed416f253';
@@ -166,11 +158,27 @@ export default {
       const tokenJSON = await tokenResponse.json();
       const { access_token: token } = tokenJSON;
 
-      const { tasks } = await this.handler(token);
-      this.tasks = tasks;
-      this.isLoading = false;
-      storeData('todoist', { token });
+      this.authenticated = true;
+      await this.handler(token);
     },
+  },
+  async created() {
+    const storage = getData('todoist') || {};
+
+    if (!storage.token) {
+      this.authenticated = false;
+      this.isLoading = false;
+      this.isFetching = false;
+      return;
+    }
+
+    this.tasks = storage.data;
+    this.isLoading = false;
+    this.oauthError = null;
+    if (!storage.data || new Date(storage.createdAt) < Date.now() - (1000 * 60 * 5)) {
+      await this.handler(storage.token);
+    }
+    this.isFetching = false;
   },
 };
 </script>
