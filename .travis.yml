@@ -13,9 +13,6 @@ install:
 script:
   - npm test
 
-before_deploy:
-  - npm install -g chrome-webstore-upload-cli
-
 deploy:
   - provider: script
     script: ./scripts/deploy.js
