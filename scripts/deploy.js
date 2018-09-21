@@ -39,7 +39,6 @@ const exec = async () => {
   const distPath = path.join(__dirname, '../dist');
   const manifestPath = path.join(distPath, 'manifest.json');
   const manifest = JSON.parse(fs.readFileSync(manifestPath));
-  delete manifest.key;
   manifest.version = version;
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
   console.log();
