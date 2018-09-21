@@ -49,16 +49,18 @@ const exec = async () => {
   const zipBuffer = zip.toBuffer();
   console.log();
   console.log(`> Uploading version ${version}`);
-
   const { uploadState } = await upload(zipBuffer);
   if (uploadState === 'SUCCESS') {
+    console.log();
+    console.log('> Publishing new version');
     return publish();
   }
   throw new Error('Upload failed');
 }
 
 exec().then(() => {
-  console.log('DONE');
+  console.log();
+  console.log('> DONE');
 }).catch((err) => {
   console.log(err);
 });
