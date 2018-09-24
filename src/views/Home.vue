@@ -78,6 +78,8 @@ import TechCrunch from '@/components/providers/TechCrunch.vue';
 import TheVerge from '@/components/providers/TheVerge.vue';
 import Wired from '@/components/providers/Wired.vue';
 import TheTimesOfIndia from '@/components/providers/TheTimesOfIndia.vue';
+import MedicalNewsToday from '@/components/providers/MedicalNewsToday.vue';
+
 import Todoist from '@/components/providers/Todoist.vue';
 
 import providersList from '@/../public/providers.json';
@@ -110,6 +112,7 @@ export default {
     TheVerge,
     Wired,
     TheTimesOfIndia,
+    MedicalNewsToday,
 
     Todoist,
 
