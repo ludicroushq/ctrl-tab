@@ -7,9 +7,11 @@
 Ludicrous tab is a chrome extension (support for other browsers coming soon) that fetches feeds from external sources including Reddit, Hacker News, GitHub, and Product Hunt (more providers coming soon).
 
 ## Screenshot
+
 ![Ludicrous Tab Screenshot](https://raw.githubusercontent.com/ludicrousxyz/tab/master/public/img/screenshot.png)
 
 ## Contribute
+
 1. Clone the repository
 2. Install dependencies
 ```bash
@@ -24,4 +26,5 @@ npm run watch
 4. Add the chrome extension by going to [chrome://extensions](chrome://extensions/), enabling developer mode, and pressing the load unpacked extension. Select the `dist` directory in the folder
 
 ### Server
-All server related code is in the [tab.api](https://github.com/ludicrousxyz/tab-api) repository.
+
+All server related code is in the [tab-api](https://github.com/ludicrousxyz/tab-api) repository.
