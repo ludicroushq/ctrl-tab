@@ -48,12 +48,12 @@
     {
       "name": "Bloomberg",
       "component": "Bloomberg",
-      "category": "News"
+      "category": "Finance"
     },
     {
       "name": "Crypto Coins News",
       "component": "CCN",
-      "category": "News"
+      "category": "Finance"
     },
     {
       "name": "CNN",
