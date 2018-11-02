@@ -33,7 +33,7 @@
     {
       "name": "Ars Technica",
       "component": "ArsTechnica",
-      "category": "News"
+      "category": "Technology"
     },
     {
       "name": "ABC News",
@@ -63,12 +63,12 @@
     {
       "name": "ESPN",
       "component": "ESPN",
-      "category": "News"
+      "category": "Sports"
     },
     {
       "name": "ESPN Cric Info",
       "component": "ESPNCricInfo",
-      "category": "News"
+      "category": "Sports"
     },
     {
       "name": "Fox News",
@@ -83,22 +83,22 @@
     {
       "name": "Mashable",
       "component": "Mashable",
-      "category": "News"
+      "category": "Technology"
     },
     {
       "name": "TechCrunch",
       "component": "TechCrunch",
-      "category": "News"
+      "category": "Technology"
     },
     {
       "name": "The Verge",
       "component": "TheVerge",
-      "category": "News"
+      "category": "Technology"
     },
     {
       "name": "Wired",
       "component": "Wired",
-      "category": "News"
+      "category": "Technology"
     },
     {
       "name": "The Times Of India",
