@@ -7,7 +7,7 @@ Vue.config.productionTip = false;
 Vue.prototype.$browser = 'Chrome';
 if (typeof InstallTrigger !== 'undefined') {
   Vue.prototype.$browser = 'Firefox';
-};
+}
 
 new Vue({
   router,
