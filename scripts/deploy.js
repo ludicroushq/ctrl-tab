@@ -34,6 +34,7 @@ const exec = async () => {
   const patch = versionArray.pop();
   versionArray.push(parseInt(patch) + 1);
   const version = versionArray.join('.');
+  const version = '0.0.6';
   console.log();
   console.log('> Updating manifest');
   const distPath = path.join(__dirname, '../dist');
@@ -48,19 +49,25 @@ const exec = async () => {
   zip.addLocalFolder(distPath);
   const zipBuffer = zip.toBuffer();
   console.log();
-  console.log(`> Uploading version ${version}`);
+  console.log(`> Uploading version ${version} to Chrome`);
   const { uploadState } = await upload(zipBuffer);
-  if (uploadState === 'SUCCESS') {
-    console.log();
-    console.log('> Publishing new version');
-    return publish();
+  if (uploadState !== 'SUCCESS') {
+    throw new Error('Upload failed');
   }
-  throw new Error('Upload failed');
+  console.log();
+  console.log('> Publishing new version to Chrome');
+  await publish();
+  console.log('> Uploading and Signing new version to Firefox');
+  try {
+    childProcess.execSync('../node_modules/.bin/web-ext-submit', { stdio: [0, 1, 2], cwd: distPath });
+  } catch (_) {
+    // do nothing
+  }
 }
 
 exec().then(() => {
   console.log();
-  console.log('> DONE');
+  console.log('> Done');
 }).catch((err) => {
   console.log(err);
 });
