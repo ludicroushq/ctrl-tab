@@ -34,7 +34,6 @@ const exec = async () => {
   const patch = versionArray.pop();
   versionArray.push(parseInt(patch) + 1);
   const version = versionArray.join('.');
-  const version = '0.0.6';
   console.log();
   console.log('> Updating manifest');
   const distPath = path.join(__dirname, '../dist');
