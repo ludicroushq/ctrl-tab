@@ -3,7 +3,7 @@
     <Message-Header background="#db4c3f" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name">
       Todoist BETA
     </Message-Header>
-    <Message-Body>
+    <Message-Body v-if="this.$browser === 'Chrome'">
       <div class="has-text-centered content" v-if="!this.authenticated && !this.isLoading">
         <br>
         <a class="button is-success" @click="login">Log in with Todoist</a>
@@ -27,6 +27,16 @@
         <div class="item">
           <div class="title is-6">
             Looks like you're all done! 🎉
+          </div>
+        </div>
+      </div>
+    </Message-Body>
+    <Message-Body v-else>
+      <div class="has-text-centered content">
+        <br>
+        <div class="item">
+          <div class="title is-6">
+            Todoist currently only works on Chrome. 😔
           </div>
         </div>
       </div>
