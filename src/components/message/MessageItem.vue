@@ -50,3 +50,10 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.item {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+</style>
