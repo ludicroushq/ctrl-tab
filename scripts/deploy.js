@@ -56,9 +56,9 @@ const exec = async () => {
   console.log();
   console.log('> Publishing new version to Chrome');
   await publish();
-  console.log('> Uploading and Signing new version to Firefox');
+  console.log('> Uploading and signing new version to Firefox');
   try {
-    childProcess.execSync('../node_modules/.bin/web-ext-submit', { stdio: [0, 1, 2], cwd: distPath });
+    childProcess.execSync('./node_modules/.bin/web-ext-submit', { stdio: [0, 1, 2], cwd: distPath });
   } catch (_) {
     // do nothing
   }
