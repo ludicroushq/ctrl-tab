@@ -58,6 +58,7 @@ const exec = async () => {
   await publish();
   console.log('> Uploading and signing new version to Firefox');
   try {
+    process.chdir(distPath);
     childProcess.execSync('npm run publish:firefox', { stdio: [0, 1, 2], cwd: distPath });
   } catch (_) {
     // do nothing
