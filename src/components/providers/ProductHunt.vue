@@ -44,7 +44,7 @@ export default {
   },
   data() {
     return {
-      name: 'ProductHunt',
+      name: 'Product Hunt',
       posts: [],
       isLoading: true,
       isFetching: true,
