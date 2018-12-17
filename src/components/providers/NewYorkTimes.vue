@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      name: 'NewYorkTimes',
+      name: 'New York Times',
       articles: [],
       isLoading: true,
       isFetching: true,

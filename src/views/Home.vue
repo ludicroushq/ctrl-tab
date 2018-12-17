@@ -12,12 +12,12 @@
           <h2 class="subtitle">Show and hide data sources that matter to you. To edit their order, close this menu and drag and drop them.</h2>
           <table class="table is-fullwidth is-striped is-bordered">
             <tbody>
-              <tr v-for="provider in this.allProviders" :key="provider.component">
+              <tr v-for="provider in this.allProviders" :key="provider.name">
                 <td>
                   {{ provider.name }}
                   <div class="is-pulled-right">
-                    <a @click="remove(provider.component)" v-if="isAdded(provider.component)" class="button is-danger is-small">Remove</a>
-                    <a @click="add(provider.component)" v-else class="button is-success is-small">Add</a>&nbsp;&nbsp;
+                    <a @click="remove(provider.name)" v-if="isAdded(provider.name)" class="button is-danger is-small">Remove</a>
+                    <a @click="add(provider.name)" v-else class="button is-success is-small">Add</a>&nbsp;&nbsp;
                   </div>
                 </td>
               </tr>
@@ -43,9 +43,9 @@
       <div
         class="column"
         v-for="provider in this.providers"
-        :key="provider.title"
+        :key="provider.name"
       >
-        <component :is="provider.component" :edit="edit" :remove="remove"></component>
+        <component :is="provider.component" :data="provider.data" :edit="edit" :remove="remove"></component>
       </div>
     </draggable>
   </section>
@@ -62,24 +62,7 @@ import Github from '@/components/providers/Github.vue';
 import Reddit from '@/components/providers/Reddit.vue';
 import NewYorkTimes from '@/components/providers/NewYorkTimes.vue';
 import Slickdeals from '@/components/providers/Slickdeals.vue';
-
-import ArsTechnica from '@/components/providers/ArsTechnica.vue';
-import ABCNews from '@/components/providers/ABCNews.vue';
-import BBCNews from '@/components/providers/BBCNews.vue';
-import Bloomberg from '@/components/providers/Bloomberg.vue';
-import CCN from '@/components/providers/CCN.vue';
-import CNN from '@/components/providers/CNN.vue';
-import ESPN from '@/components/providers/ESPN.vue';
-import ESPNCricInfo from '@/components/providers/ESPNCricInfo.vue';
-import FoxNews from '@/components/providers/FoxNews.vue';
-import GoogleNews from '@/components/providers/GoogleNews.vue';
-import Mashable from '@/components/providers/Mashable.vue';
-import TechCrunch from '@/components/providers/TechCrunch.vue';
-import TheVerge from '@/components/providers/TheVerge.vue';
-import Wired from '@/components/providers/Wired.vue';
-import TheTimesOfIndia from '@/components/providers/TheTimesOfIndia.vue';
-import MedicalNewsToday from '@/components/providers/MedicalNewsToday.vue';
-
+import NewsAPI from '@/components/providers/NewsAPI.vue';
 import Todoist from '@/components/providers/Todoist.vue';
 
 import providersList from '@/../public/providers.json';
@@ -96,24 +79,7 @@ export default {
     Reddit,
     NewYorkTimes,
     Slickdeals,
-
-    ArsTechnica,
-    ABCNews,
-    BBCNews,
-    Bloomberg,
-    CCN,
-    CNN,
-    ESPN,
-    ESPNCricInfo,
-    FoxNews,
-    GoogleNews,
-    Mashable,
-    TechCrunch,
-    TheVerge,
-    Wired,
-    TheTimesOfIndia,
-    MedicalNewsToday,
-
+    NewsAPI,
     Todoist,
 
     Fab,
@@ -133,19 +99,19 @@ export default {
       storeData('providers', this.providers);
     },
 
-    add(component) {
-      const provider = this.allProviders.find(obj => obj.component === component);
+    add(name) {
+      const provider = this.allProviders.find(obj => obj.name === name);
       this.providers.push(provider);
       storeData('providers', this.providers);
     },
 
-    remove(component) {
-      this.providers = this.providers.filter(obj => obj.component !== component);
+    remove(name) {
+      this.providers = this.providers.filter(obj => obj.name !== name);
       storeData('providers', this.providers);
     },
 
-    isAdded(component) {
-      return this.providers.find(obj => obj.component === component);
+    isAdded(name) {
+      return this.providers.find(obj => obj.name === name);
     },
 
     toggleEdit() {

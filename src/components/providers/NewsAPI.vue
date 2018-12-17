@@ -1,19 +1,14 @@
 <template>
   <Message>
-    <Message-Header background="#c00c00" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name">
-      CNN
+    <Message-Header :background="this.data.background" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.data.title">
+      {{ this.data.title }}
     </Message-Header>
     <Message-Body>
-      <Message-Item :data="this.articles" :isLoading="this.isLoading" moreURL="https://www.cnn.com">
-        <div class="subtitle is-7" slot-scope="article">
-          {{ article.item.description }}<br style="line-height: 125%;">
-          <span v-if="article.item.author">By {{ article.item.author }},</span>
-          {{ timeAgo(article.item.published) }}.
-        </div>
-        <template slot="attribution">
+      <Message-Item :data="this.articles" :isLoading="this.isLoading" :moreURL="this.data.url">
+        <div class="subtitle is-7" slot-scope="post" v-html="post.item.subtitle"></div>
+        <template slot="attribution" v-if="this.data.attribution">
           <div class="item">
-            <div class="subtitle is-7 has-text-centered">
-              Feed Provided by <a href="https://newsapi.org" target="_blank" rel="noopener noreferrer">NewsAPI.org</a>.
+            <div class="subtitle is-7 has-text-centered" v-html="this.data.attribution">
             </div>
           </div>
           <hr>
@@ -24,7 +19,6 @@
 </template>
 
 <script>
-import { timeAgo } from '@/utils/time-ago';
 import { getData, storeData } from '@/utils/local-storage';
 
 import Message from '@/components/message/Message.vue';
@@ -33,8 +27,8 @@ import MessageBody from '@/components/message/MessageBody.vue';
 import MessageItem from '@/components/message/MessageItem.vue';
 
 export default {
-  name: 'CNN',
-  props: ['edit', 'remove'],
+  name: 'Standard',
+  props: ['data', 'edit', 'remove'],
   components: {
     Message,
     MessageHeader,
@@ -43,16 +37,14 @@ export default {
   },
   data() {
     return {
-      name: 'CNN',
       articles: [],
       isLoading: true,
       isFetching: true,
     };
   },
   methods: {
-    timeAgo,
     async request() {
-      const response = await fetch('https://api.tab.ludicrous.xyz/v1/cnn/index');
+      const response = await fetch(`https://api.tab.ludicrous.xyz/v1/${this.data.slug}/index`);
       const data = await response.json();
       this.isFetching = false;
       return data.articles;
@@ -61,14 +53,14 @@ export default {
       const data = await this.request();
       this.articles = data;
       this.isLoading = false;
-      storeData('cnn', {
+      storeData(this.data.slug, {
         data,
         createdAt: Date.now(),
       });
     },
   },
   created() {
-    const storage = getData('cnn');
+    const storage = getData(this.data.slug);
     if (storage) {
       this.articles = storage.data;
       this.isLoading = false;

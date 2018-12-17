@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      name: 'HackerNews',
+      name: 'Hacker News',
       articles: [],
       isLoading: true,
       isFetching: true,
