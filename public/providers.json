@@ -282,6 +282,7 @@
     },
     {
       "name": "Todoist",
+      "key": "todoist",
       "component": "Todoist",
       "category": "Productivity"
     }
