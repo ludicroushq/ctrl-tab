@@ -56,13 +56,7 @@ import draggable from 'vuedraggable';
 
 import { getData, storeData } from '@/utils/local-storage';
 import Fab from '@/components/Fab.vue';
-import HackerNews from '@/components/providers/HackerNews.vue';
-import ProductHunt from '@/components/providers/ProductHunt.vue';
-import Github from '@/components/providers/Github.vue';
-import Reddit from '@/components/providers/Reddit.vue';
-import NewYorkTimes from '@/components/providers/NewYorkTimes.vue';
-import Slickdeals from '@/components/providers/Slickdeals.vue';
-import NewsAPI from '@/components/providers/NewsAPI.vue';
+import Standard from '@/components/providers/Standard.vue';
 import Todoist from '@/components/providers/Todoist.vue';
 
 import providersList from '@/../public/providers.json';
@@ -73,13 +67,7 @@ export default {
   name: 'Home',
   props: ['query'],
   components: {
-    HackerNews,
-    ProductHunt,
-    Github,
-    Reddit,
-    NewYorkTimes,
-    Slickdeals,
-    NewsAPI,
+    Standard,
     Todoist,
 
     Fab,

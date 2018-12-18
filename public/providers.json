@@ -2,37 +2,73 @@
   "providers": [
     {
       "name": "Reddit",
-      "component": "Reddit",
+      "component": "Standard",
+      "data": {
+        "title": "Reddit",
+        "slug": "reddit",
+        "url": "https://www.reddit.com/r/all",
+        "background": "#1976d2"
+      },
       "category": "Social Networking"
     },
     {
       "name": "Product Hunt",
-      "component": "ProductHunt",
+      "component": "Standard",
+      "data": {
+        "title": "Product Hunt",
+        "slug": "product-hunt",
+        "url": "https://www.producthunt.com",
+        "background": "#da552f"
+      },
       "category": "Technology"
     },
     {
       "name": "Hacker News",
-      "component": "HackerNews",
+      "component": "Standard",
+      "data": {
+        "title": "Hacker News",
+        "slug": "hacker-news",
+        "url": "https://news.ycombinator.com",
+        "background": "#ff6600"
+      },
       "category": "Technology"
     },
     {
       "name": "New York Times",
-      "component": "NewYorkTimes",
+      "component": "Standard",
+      "data": {
+        "title": "New York Times",
+        "slug": "new-york-times",
+        "url": "https://www.nytimes.com",
+        "background": "#000000"
+      },
       "category": "News"
     },
     {
       "name": "Github",
-      "component": "Github",
+      "component": "Standard",
+      "data": {
+        "title": "Github",
+        "slug": "github",
+        "url": "https://github.com/trending",
+        "background": "#24292e"
+      },
       "category": "Technology"
     },
     {
       "name": "Slickdeals",
-      "component": "Slickdeals",
+      "component": "Standard",
+      "data": {
+        "title": "Slickdeals",
+        "slug": "slickdeals",
+        "url": "https://slickdeals.net",
+        "background": "#0072bc"
+      },
       "category": "Shopping"
     },
     {
       "name": "Ars Technica",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "Ars Technica",
         "slug": "ars-technica",
@@ -44,7 +80,7 @@
     },
     {
       "name": "ABC News",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "ABC News",
         "slug": "abc-news",
@@ -56,7 +92,7 @@
     },
     {
       "name": "BBC News",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "BBC News",
         "slug": "bbc-news",
@@ -68,7 +104,7 @@
     },
     {
       "name": "Bloomberg",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "Bloomberg",
         "slug": "bloomberg",
@@ -80,7 +116,7 @@
     },
     {
       "name": "Crypto Coins News",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "Crypto Coins News",
         "slug": "ccn",
@@ -92,7 +128,7 @@
     },
     {
       "name": "CNN",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "CNN",
         "slug": "cnn",
@@ -104,7 +140,7 @@
     },
     {
       "name": "ESPN",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "ESPN",
         "slug": "espn",
@@ -116,7 +152,7 @@
     },
     {
       "name": "ESPN Cric Info",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "ESPN Cric Info",
         "slug": "espn-cric-info",
@@ -128,7 +164,7 @@
     },
     {
       "name": "Fox News",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "Fox News",
         "slug": "fox-news",
@@ -140,7 +176,7 @@
     },
     {
       "name": "Google News",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "Google News",
         "slug": "google-news",
@@ -152,7 +188,7 @@
     },
     {
       "name": "Mashable",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "Mashable",
         "slug": "mashable",
@@ -164,7 +200,7 @@
     },
     {
       "name": "Medical News Today",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "Medical News Today",
         "slug": "medical-news-today",
@@ -176,7 +212,7 @@
     },
     {
       "name": "TechCrunch",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "TechCrunch",
         "slug": "techcrunch",
@@ -188,7 +224,7 @@
     },
     {
       "name": "The Verge",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "The Verge",
         "slug": "the-verge",
@@ -200,7 +236,7 @@
     },
     {
       "name": "Wired",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "Wired",
         "slug": "wired",
@@ -212,7 +248,7 @@
     },
     {
       "name": "The Times Of India",
-      "component": "NewsAPI",
+      "component": "Standard",
       "data": {
         "title": "The Times Of India",
         "slug": "the-times-of-india",
