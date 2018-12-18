@@ -10,19 +10,36 @@
         <section class="modal-card-body">
           <h1 class="title">Personalize Your New Tab Page</h1>
           <h2 class="subtitle">Show and hide data sources that matter to you. To edit their order, close this menu and drag and drop them.</h2>
-          <table class="table is-fullwidth is-striped is-bordered">
-            <tbody>
-              <tr v-for="provider in this.allProviders" :key="provider.name">
-                <td>
+          <div class="columns">
+            <div class="column">
+              <nav class="panel" v-for="category in this.leftCategories" :key="category.name">
+                <p class="panel-heading">
+                  {{ category.name }}
+                </p>
+                <div class="panel-block provider" v-for="provider in category.providers" :key="provider.name">
                   {{ provider.name }}
-                  <div class="is-pulled-right">
-                    <a @click="remove(provider.name)" v-if="isAdded(provider.name)" class="button is-danger is-small">Remove</a>
-                    <a @click="add(provider.name)" v-else class="button is-success is-small">Add</a>&nbsp;&nbsp;
+                  <div>
+                    <a @click="remove(provider.name)" v-if="isAdded(provider.name)" class="button is-outlined is-danger is-small">Remove</a>
+                    <a @click="add(provider.name)" v-else class="button is-outlined is-success is-small">Add</a>&nbsp;&nbsp;
                   </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                </div>
+              </nav>
+            </div>
+            <div class="column">
+              <nav class="panel" v-for="category in this.rightCategories" :key="category.name">
+                <p class="panel-heading">
+                  {{ category.name }}
+                </p>
+                <div class="panel-block provider" v-for="provider in category.providers" :key="provider.name">
+                  {{ provider.name }}
+                  <div>
+                    <a @click="remove(provider.name)" v-if="isAdded(provider.name)" class="button is-outlined is-danger is-small">Remove</a>
+                    <a @click="add(provider.name)" v-else class="button is-outlined is-success is-small">Add</a>&nbsp;&nbsp;
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
         </section>
         <footer class="modal-card-foot">
           <button class="button is-success" @click="hideAddModal">Close</button>
@@ -53,6 +70,7 @@
 
 <script>
 import draggable from 'vuedraggable';
+import _ from 'lodash';
 
 import { getData, storeData } from '@/utils/local-storage';
 import Fab from '@/components/Fab.vue';
@@ -88,7 +106,7 @@ export default {
     },
 
     add(name) {
-      const provider = this.allProviders.find(obj => obj.name === name);
+      const provider = allProviders.find(obj => obj.name === name);
       this.providers.push(provider);
       storeData('providers', this.providers);
     },
@@ -113,8 +131,25 @@ export default {
       providers = [];
       storeData('providers', providers);
     }
+    const categories = _.uniq(allProviders.map(provider => provider.category || 'Uncategorized'));
+    const categorizedProviders = categories.map(category => ({
+      name: category,
+      providers: allProviders.filter(provider => provider.category === category),
+    }));
+    const sortedCategories = _.sortBy(categorizedProviders, [obj => obj.providers.length]).reverse();
+    const leftCategories = [];
+    const rightCategories = [];
+    sortedCategories.forEach((category) => {
+      if (leftCategories.length > rightCategories.length) {
+        return rightCategories.push(category);
+      }
+      return leftCategories.push(category);
+    });
+    leftCategories.reverse();
+    rightCategories.reverse();
     return {
-      allProviders,
+      leftCategories,
+      rightCategories,
       providers,
       addModal: false,
       edit: !providers.length,
@@ -122,3 +157,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.provider {
+  justify-content: space-between;
+}
+</style>
