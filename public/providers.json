@@ -2,6 +2,7 @@
   "providers": [
     {
       "name": "Reddit",
+      "key": "reddit",
       "component": "Standard",
       "data": {
         "title": "Reddit",
@@ -13,6 +14,7 @@
     },
     {
       "name": "Product Hunt",
+      "key": "product-hunt",
       "component": "Standard",
       "data": {
         "title": "Product Hunt",
@@ -24,6 +26,7 @@
     },
     {
       "name": "Hacker News",
+      "key": "hacker-news",
       "component": "Standard",
       "data": {
         "title": "Hacker News",
@@ -35,6 +38,7 @@
     },
     {
       "name": "New York Times",
+      "key": "new-york-times",
       "component": "Standard",
       "data": {
         "title": "New York Times",
@@ -46,6 +50,7 @@
     },
     {
       "name": "Github",
+      "key": "github",
       "component": "Standard",
       "data": {
         "title": "Github",
@@ -57,6 +62,7 @@
     },
     {
       "name": "Slickdeals",
+      "key": "slickdeals",
       "component": "Standard",
       "data": {
         "title": "Slickdeals",
@@ -68,6 +74,7 @@
     },
     {
       "name": "Ars Technica",
+      "key": "ars-technica",
       "component": "Standard",
       "data": {
         "title": "Ars Technica",
@@ -80,6 +87,7 @@
     },
     {
       "name": "ABC News",
+      "key": "abc-news",
       "component": "Standard",
       "data": {
         "title": "ABC News",
@@ -92,6 +100,7 @@
     },
     {
       "name": "BBC News",
+      "key": "bbc-news",
       "component": "Standard",
       "data": {
         "title": "BBC News",
@@ -104,6 +113,7 @@
     },
     {
       "name": "Bloomberg",
+      "key": "bloomberg",
       "component": "Standard",
       "data": {
         "title": "Bloomberg",
@@ -116,6 +126,7 @@
     },
     {
       "name": "Crypto Coins News",
+      "key": "ccn",
       "component": "Standard",
       "data": {
         "title": "Crypto Coins News",
@@ -128,6 +139,7 @@
     },
     {
       "name": "CNN",
+      "key": "cnn",
       "component": "Standard",
       "data": {
         "title": "CNN",
@@ -140,6 +152,7 @@
     },
     {
       "name": "ESPN",
+      "key": "espn",
       "component": "Standard",
       "data": {
         "title": "ESPN",
@@ -152,6 +165,7 @@
     },
     {
       "name": "ESPN Cric Info",
+      "key": "espn-cric-info",
       "component": "Standard",
       "data": {
         "title": "ESPN Cric Info",
@@ -164,6 +178,7 @@
     },
     {
       "name": "Fox News",
+      "key": "fox-news",
       "component": "Standard",
       "data": {
         "title": "Fox News",
@@ -176,6 +191,7 @@
     },
     {
       "name": "Google News",
+      "key": "google-news",
       "component": "Standard",
       "data": {
         "title": "Google News",
@@ -188,6 +204,7 @@
     },
     {
       "name": "Mashable",
+      "key": "mashable",
       "component": "Standard",
       "data": {
         "title": "Mashable",
@@ -200,6 +217,7 @@
     },
     {
       "name": "Medical News Today",
+      "key": "medical-news-today",
       "component": "Standard",
       "data": {
         "title": "Medical News Today",
@@ -212,6 +230,7 @@
     },
     {
       "name": "TechCrunch",
+      "key": "techcrunch",
       "component": "Standard",
       "data": {
         "title": "TechCrunch",
@@ -224,6 +243,7 @@
     },
     {
       "name": "The Verge",
+      "key": "the-verge",
       "component": "Standard",
       "data": {
         "title": "The Verge",
@@ -236,6 +256,7 @@
     },
     {
       "name": "Wired",
+      "key": "wired",
       "component": "Standard",
       "data": {
         "title": "Wired",
@@ -248,6 +269,7 @@
     },
     {
       "name": "The Times Of India",
+      "key": "the-times-of-india",
       "component": "Standard",
       "data": {
         "title": "The Times Of India",

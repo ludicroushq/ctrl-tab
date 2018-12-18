@@ -16,11 +16,11 @@
                 <p class="panel-heading">
                   {{ category.name }}
                 </p>
-                <div class="panel-block provider" v-for="provider in category.providers" :key="provider.name">
+                <div class="panel-block provider" v-for="provider in category.providers" :key="provider.key">
                   {{ provider.name }}
                   <div>
-                    <a @click="remove(provider.name)" v-if="isAdded(provider.name)" class="button is-outlined is-danger is-small">Remove</a>
-                    <a @click="add(provider.name)" v-else class="button is-outlined is-success is-small">Add</a>&nbsp;&nbsp;
+                    <a @click="remove(provider.key)" v-if="isAdded(provider.key)" class="button is-outlined is-danger is-small">Remove</a>
+                    <a @click="add(provider.key)" v-else class="button is-outlined is-success is-small">Add</a>&nbsp;&nbsp;
                   </div>
                 </div>
               </nav>
@@ -30,11 +30,11 @@
                 <p class="panel-heading">
                   {{ category.name }}
                 </p>
-                <div class="panel-block provider" v-for="provider in category.providers" :key="provider.name">
+                <div class="panel-block provider" v-for="provider in category.providers" :key="provider.key">
                   {{ provider.name }}
                   <div>
-                    <a @click="remove(provider.name)" v-if="isAdded(provider.name)" class="button is-outlined is-danger is-small">Remove</a>
-                    <a @click="add(provider.name)" v-else class="button is-outlined is-success is-small">Add</a>&nbsp;&nbsp;
+                    <a @click="remove(provider.key)" v-if="isAdded(provider.key)" class="button is-outlined is-danger is-small">Remove</a>
+                    <a @click="add(provider.key)" v-else class="button is-outlined is-success is-small">Add</a>&nbsp;&nbsp;
                   </div>
                 </div>
               </nav>
@@ -59,10 +59,10 @@
     <draggable v-else class="columns" :list="this.providers" @end="onEnd">
       <div
         class="column"
-        v-for="provider in this.providers"
-        :key="provider.name"
+        v-for="provider in this.computedProviders"
+        :key="provider.key"
       >
-        <component :is="provider.component" :data="provider.data" :edit="edit" :remove="remove"></component>
+        <component :is="provider.component" :name="provider.key" :data="provider.data" :edit="edit" :remove="remove"></component>
       </div>
     </draggable>
   </section>
@@ -105,32 +105,43 @@ export default {
       storeData('providers', this.providers);
     },
 
-    add(name) {
-      const provider = allProviders.find(obj => obj.name === name);
-      this.providers.push(provider);
+    add(key) {
+      this.providers.push(key);
       storeData('providers', this.providers);
     },
 
-    remove(name) {
-      this.providers = this.providers.filter(obj => obj.name !== name);
+    remove(key) {
+      this.providers = this.providers.filter(obj => obj !== key);
       storeData('providers', this.providers);
     },
 
-    isAdded(name) {
-      return this.providers.find(obj => obj.name === name);
+    isAdded(key) {
+      return this.providers.find(obj => obj === key);
     },
 
     toggleEdit() {
       this.edit = !this.edit;
     },
+
+    getProviders(providers) {
+      return providers.map(key => allProviders.find(obj => obj.key === key));
+    },
+  },
+
+  watch: {
+    providers() {
+      this.computedProviders = this.getProviders(this.providers);
+    },
   },
 
   data() {
     let providers = getData('providers');
-    if (!providers) {
+    if (!providers || typeof providers[0] === 'object') {
       providers = [];
       storeData('providers', providers);
     }
+    const computedProviders = this.getProviders(providers);
+
     const categories = _.uniq(allProviders.map(provider => provider.category || 'Uncategorized'));
     const categorizedProviders = categories.map(category => ({
       name: category,
@@ -147,10 +158,12 @@ export default {
     });
     leftCategories.reverse();
     rightCategories.reverse();
+
     return {
       leftCategories,
       rightCategories,
       providers,
+      computedProviders,
       addModal: false,
       edit: !providers.length,
     };

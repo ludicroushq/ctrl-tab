@@ -1,6 +1,6 @@
 <template>
   <Message>
-    <Message-Header :background="this.data.background" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.data.title" :refresh="this.refresh">
+    <Message-Header :background="this.data.background" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name" :refresh="this.refresh">
       {{ this.data.title }}
     </Message-Header>
     <Message-Body>
@@ -28,7 +28,7 @@ import MessageItem from '@/components/message/MessageItem.vue';
 
 export default {
   name: 'Standard',
-  props: ['data', 'edit', 'remove'],
+  props: ['data', 'edit', 'remove', 'name'],
   components: {
     Message,
     MessageHeader,

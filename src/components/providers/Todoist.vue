@@ -83,7 +83,7 @@ const authenticate = (url, options = {}) => new Promise((resolve, reject) => {
 
 export default {
   name: 'Todoist',
-  props: ['edit', 'remove'],
+  props: ['edit', 'remove', 'name'],
   components: {
     Message,
     MessageHeader,
@@ -92,7 +92,6 @@ export default {
   },
   data() {
     return {
-      name: 'Todoist',
       oauthError: null,
       isLoading: true,
       isFetching: true,
