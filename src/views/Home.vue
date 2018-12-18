@@ -136,10 +136,10 @@ export default {
       name: category,
       providers: allProviders.filter(provider => provider.category === category),
     }));
-    const sortedCategories = _.sortBy(categorizedProviders, [(obj) => obj.providers.length]).reverse();
+    const sortedCategories = _.sortBy(categorizedProviders, [obj => obj.providers.length]).reverse();
     const leftCategories = [];
     const rightCategories = [];
-    sortedCategories.forEach((category, index) => {
+    sortedCategories.forEach((category) => {
       if (leftCategories.length > rightCategories.length) {
         return rightCategories.push(category);
       }
