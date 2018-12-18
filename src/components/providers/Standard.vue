@@ -1,6 +1,6 @@
 <template>
   <Message>
-    <Message-Header :background="this.data.background" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.data.title">
+    <Message-Header :background="this.data.background" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.data.title" :refresh="this.refresh">
       {{ this.data.title }}
     </Message-Header>
     <Message-Body>
@@ -60,6 +60,10 @@ export default {
         data,
         createdAt: Date.now(),
       });
+    },
+    async refresh() {
+      this.isFetching = true;
+      await this.handler();
     },
   },
   created() {

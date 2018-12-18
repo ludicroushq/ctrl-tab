@@ -1,6 +1,6 @@
 <template>
   <Message>
-    <Message-Header background="#db4c3f" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name">
+    <Message-Header background="#db4c3f" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name" :refresh="this.authenticated && this.refresh">
       Todoist BETA
     </Message-Header>
     <Message-Body v-if="this.$browser === 'Chrome'">
@@ -97,34 +97,39 @@ export default {
       isLoading: true,
       isFetching: true,
       authenticated: true,
+      token: '',
       tasks: [],
     };
   },
   methods: {
     calendar,
-    async request(token) {
+    async request() {
       const response = await fetch('https://api.tab.ludicrous.xyz/v1/todoist/index', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
         },
         body: JSON.stringify({
-          token,
+          token: this.token,
         }),
       });
       const data = await response.json();
       this.isFetching = false;
       return data.tasks;
     },
-    async handler(token) {
-      const data = await this.request(token);
+    async handler() {
+      const data = await this.request();
       this.tasks = data;
       this.isLoading = false;
       storeData('todoist', {
-        token,
+        token: this.token,
         data,
         createdAt: Date.now(),
       });
+    },
+    async refresh() {
+      this.isFetching = true;
+      await this.handler();
     },
     async login() {
       this.isLoading = true;
@@ -185,8 +190,9 @@ export default {
     this.tasks = storage.data;
     this.isLoading = false;
     this.oauthError = null;
+    this.token = storage.token;
     if (!storage.data || new Date(storage.createdAt) < Date.now() - (1000 * 60 * 5)) {
-      await this.handler(storage.token);
+      await this.handler();
     }
     this.isFetching = false;
   },

@@ -2,19 +2,28 @@
   <div class="message-header" :style="`background: ${background};`">
     <slot></slot>
     <div class="is-pulled-right">
-      <div v-if="edit">
-        <a class="button is-small is-primary move" :style="`background-color: ${background};`">
+      <div v-if="this.edit">
+        <a class="button is-small is-primary move" :style="`background-color: ${this.background};`">
           <span class="icon">
             <i class="material-icons">open_with</i>
           </span>
         </a>
-        <a class="button is-small is-primary" @click="remove(name)" :style="`background-color: ${background};`">
+        <a class="button is-small is-primary" @click="remove(name)" :style="`background-color: ${this.background};`">
           <span class="icon">
             <i class="material-icons">delete</i>
           </span>
         </a>
       </div>
-      <div v-else-if="isLoading" class="is-loading"></div>
+      <div class="loading" v-else-if="this.isLoading">
+        <div class="is-loading"></div>
+      </div>
+      <div v-else>
+        <a v-if="this.refresh" class="button is-small is-primary" @click="refresh(name)" :style="`background-color: ${this.background};`">
+          <span class="icon">
+            <i class="material-icons">refresh</i>
+          </span>
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -24,7 +33,7 @@ import Spinner from '@/components/Spinner.vue';
 
 export default {
   name: 'Message-Header',
-  props: ['background', 'isLoading', 'edit', 'remove', 'name'],
+  props: ['background', 'isLoading', 'edit', 'remove', 'name', 'refresh'],
   components: {
     Spinner,
   },
@@ -37,6 +46,10 @@ export default {
   color: #ffffff;
   padding-left: 1em;
   padding-right: 1em;
+}
+
+.loading {
+  padding: 3.5px 5px;
 }
 
 .move {
