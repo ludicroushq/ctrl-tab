@@ -19,7 +19,7 @@
 			"strict_min_version": "55.0"
 		}
 	},
-  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2fjArcIcvZn0XxacRnQCNN4sJ3mylXuqh6GpsMdRed8UOH4a6qZvN134xVKJf8NTukyQ3N3dO75RT3qTteOiPlyGQO83y0zAfpgDbntNEmOuqbn12CjUelTV7d0H7EX7zCj4DVRZmbDmTjwvtqlSR5BDpOpoOb9m+g4qBCTTa39u+Qxq6/rb0DyKBJWZMjlW8rJsSMr5ahbBvUf47p1OCNfFy5WUO4i5u9kW+pO9LvDB7d9bnZBbmgWf08h0ejt69nVjo9YrlhIDsN0zAJbVZHpDadxPvv1O5z1e+zTXm5G6xI9MalqOWMh2tr/K5AlC2WNZWbJ/WTdTDpgs3mtTWQIDAQAB",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlLwHSVBSGkXUTRp4YjEVe285EckjxPJgz3OSOvPbz6R5uvKFLzi1rLR3y5vpxrgpSggJdp/8KpsQU88FAgLUzg/3K6VJ8RIcVSi6wl0E8Dhb7DlSDon5ucXAzhowgfBMyrQR/wHWPBIGM9+XxlSNywYXpxVAsrtguLERzVLyfXDU4liRXudkXYCNj6fo3IIFnm1vPC2Dj5+JQFXXG2Vgba5ZsO+K5WpzxuoZeujK0kMMXeh2R3nuqCP04j36/tQOsguWVuqHbRHDEFFVqwu/rOqEySQ2qCH5nR76M/mqnZIERdSn5fRjHt6pPey1wb/3j3bEU8PcjsSqKv8UCzrKGwIDAQAB",
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "permissions": [
     "identity",

@@ -174,7 +174,8 @@ export default {
       const { access_token: token } = tokenJSON;
 
       this.authenticated = true;
-      await this.handler(token);
+      this.token = token;
+      await this.handler();
     },
   },
   async created() {
