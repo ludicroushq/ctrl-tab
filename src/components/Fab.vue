@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="edit-tooltip" v-if="this.edit">
-      Press X to Close Edit Mode
+      Press the X to Close Edit Mode
     </div>
     <a href="https://github.com/ludicrousxyz/tab" target="_blank" rel="noopener noreferrer">
       <button v-if="this.edit" class="button help is-medium is-black is-rounded">
@@ -55,6 +55,7 @@ button {
   color: #ffffff;
   border-radius: 5px;
   bottom: 16.66em;
+  padding: 1px;
 }
 
 .add {
