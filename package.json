@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "animate.css": "^3.7.0",
+    "lodash": "^4.17.11",
     "material-icons": "^0.2.3",
     "moment": "^2.22.2",
     "uuid": "^3.3.2",
