@@ -20,7 +20,7 @@
       <div v-else>
         <a v-if="this.refresh" class="button is-small is-primary" @click="refresh(name)" :style="`background-color: ${this.background};`">
           <span class="icon">
-            <i class="material-icons">refresh</i>
+            <i class="material-icons" aria-hidden="true">refresh</i>
           </span>
         </a>
       </div>
