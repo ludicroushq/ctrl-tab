@@ -1,7 +1,9 @@
 <template>
   <Message>
     <Message-Header :background="this.data.background" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name" :refresh="this.refresh">
-      {{ this.data.title }}
+      <a :href="this.data.url" class="hide-underline">
+        {{ this.data.title }}
+      </a>
     </Message-Header>
     <Message-Body>
       <Message-Item :data="this.posts" :isLoading="this.isLoading" :moreURL="this.data.url">

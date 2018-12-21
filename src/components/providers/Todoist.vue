@@ -1,7 +1,9 @@
 <template>
   <Message>
     <Message-Header background="#db4c3f" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name" :refresh="this.authenticated && this.refresh">
-      Todoist BETA
+      <a href="https://todoist.com/app" class="hide-underline">
+        Todoist BETA
+      </a>
     </Message-Header>
     <Message-Body v-if="this.$browser === 'Chrome'">
       <div class="has-text-centered content" v-if="!this.authenticated && !this.isLoading">
