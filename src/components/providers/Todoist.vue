@@ -1,7 +1,7 @@
 <template>
   <Message>
     <Message-Header background="#db4c3f" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name" :refresh="this.authenticated && this.refresh">
-      <a href="https://todoist.com/app" class="hide-underline">
+      <a href="https://todoist.com/app" class="hide-underline" target="_blank" rel="noopener noreferrer">
         Todoist BETA
       </a>
     </Message-Header>

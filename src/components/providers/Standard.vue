@@ -1,7 +1,7 @@
 <template>
   <Message>
     <Message-Header :background="this.data.background" :isLoading="this.isFetching" :edit="this.edit" :remove="remove" :name="this.name" :refresh="this.refresh">
-      <a :href="this.data.url" class="hide-underline">
+      <a :href="this.data.url" class="hide-underline" target="_blank" rel="noopener noreferrer">
         {{ this.data.title }}
       </a>
     </Message-Header>
