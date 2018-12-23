@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "ludicrous tab",
+  "name": "ctrl tab",
   "version": "0.0.0",
-  "description": "ludicrous tab is an extension that shows the data that matters to you in your new tab page.",
+  "description": "ctrl tab is an extension that shows the data that matters to you in your new tab page.",
   "icons": {
     "16": "img/icons/icon16.png",
     "48": "img/icons/icon48.png",
