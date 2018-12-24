@@ -1,30 +1,31 @@
-<h1 align="center">ctrl tab</h1>
+<h1 align="center">
+  ctrl tab
+  <p align="center">
+    <a href="https://travis-ci.org/ludicrousxyz/ctrl-tab" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/travis/ludicrousxyz/ctrl-tab.svg" alt="build status"></a>
+  </p>
+</h1>
 
-<p align="center">
-  <a href="https://travis-ci.org/ludicrousxyz/ctrl-tab" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/travis/ludicrousxyz/ctrl-tab.svg" alt="Build Status"></a>
-</p>
+ctrl tab is a new tab page that fetches news feeds that are relevant to you. choose from over 20 different data providers and customize the page how you want it.
 
-ctrl tab is a chrome extension (support for other browsers coming soon) that fetches feeds from external sources including Reddit, Hacker News, GitHub, and Product Hunt (more providers coming soon).
-
-## Screenshot
+## screenshot
 
 ![ctrl tab screenshot](https://raw.githubusercontent.com/ludicrousxyz/ctrl-tab/master/public/img/screenshot.png)
 
-## Contribute
+## contribute
 
-1. Clone the repository
-2. Install dependencies
+1. clone the repository
+2. install dependencies
 ```bash
 npm install
 ```
-3. Run the webpack server (or build once if you aren't making any changes to the code)
+3. run the webpack server (or build once if you aren't making any changes to the code)
 ```bash
 npm run watch
 # or if you aren't making any changes to the code
-# npm run build 
+# npm run build
 ```
-4. Add the chrome extension by going to [chrome://extensions](chrome://extensions/), enabling developer mode, and pressing the load unpacked extension. Select the `dist` directory in the folder
+4. add the chrome extension by going to [chrome://extensions](chrome://extensions/), enabling developer mode, and pressing the load unpacked extension. select the `dist` directory in the folder
 
-### Server
+### server
 
-All server related code is in the [ctrl-tab-api](https://github.com/ludicrousxyz/ctrl-tab-api) repository.
+all server related code is in the [ctrl-tab-api](https://github.com/ludicrousxyz/ctrl-tab-api) repository.
