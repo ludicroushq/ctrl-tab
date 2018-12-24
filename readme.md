@@ -6,10 +6,14 @@
     </a>
     <a href="https://chrome.google.com/webstore/detail/ctrl-tab/ijfnjhlohbehhlhhokgokabonpnlldon" target="_blank" rel="noopener noreferrer">
       <img src="https://img.shields.io/chrome-web-store/v/ijfnjhlohbehhlhhokgokabonpnlldon.svg" alt="chrome web store version">
+    </a>
+    <a href="https://chrome.google.com/webstore/detail/ctrl-tab/ijfnjhlohbehhlhhokgokabonpnlldon" target="_blank" rel="noopener noreferrer">
       <img src="https://img.shields.io/chrome-web-store/rating/ijfnjhlohbehhlhhokgokabonpnlldon.svg" alt="chrome web store rating">
     </a>
     <a href="https://addons.mozilla.org/en-US/firefox/addon/ctrl-tab" target="_blank" rel="noopener noreferrer">
       <img src="https://img.shields.io/amo/v/ctrl-tab.svg" alt="firefox add-ons version">
+    </a>
+    <a href="https://addons.mozilla.org/en-US/firefox/addon/ctrl-tab" target="_blank" rel="noopener noreferrer">
       <img src="https://img.shields.io/amo/rating/ctrl-tab.svg" alt="firefox add-ons rating">
     </a>
   </p>
