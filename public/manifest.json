@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "ctrl-tab",
+  "name": "ctrl tab",
   "version": "0.0.0",
   "description": "ctrl tab is an extension that shows the data that matters to you in your new tab page.",
   "icons": {
