@@ -3,7 +3,7 @@
     <div class="edit-tooltip" v-if="this.edit">
       Press the X to Close Edit Mode
     </div>
-    <a href="https://github.com/ludicrousxyz/ctrltab" target="_blank" rel="noopener noreferrer">
+    <a href="https://github.com/ludicrousxyz/ctrl-tab" target="_blank" rel="noopener noreferrer">
       <button v-if="this.edit" class="button help is-medium is-black is-rounded">
         ?
       </button>

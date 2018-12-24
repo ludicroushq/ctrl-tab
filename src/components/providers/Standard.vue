@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     async request() {
-      const response = await fetch(`https://api.tab.ludicrous.xyz/v1/${this.data.slug}/index`);
+      const response = await fetch(`https://api.ctrltab.io/v1/${this.data.slug}/index`);
       const data = await response.json();
       this.isFetching = false;
       if (data.articles) {

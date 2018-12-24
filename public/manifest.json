@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "ctrl tab",
+  "name": "ctrl-tab",
   "version": "0.0.0",
   "description": "ctrl tab is an extension that shows the data that matters to you in your new tab page.",
   "icons": {
@@ -8,8 +8,8 @@
     "48": "img/icons/icon48.png",
     "128": "img/icons/icon128.png"
   },
-  "homepage_url": "https://tab.ludicrous.xyz",
-  "short_name": "tab",
+  "homepage_url": "https://www.ctrltab.io",
+  "short_name": "ctrl-tab",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
@@ -23,7 +23,7 @@
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "permissions": [
     "identity",
-    "https://api.tab.ludicrous.xyz/*",
+    "https://api.ctrltab.io/*",
     "https://todoist.com/oauth/*",
     "http://localhost:3000/*"
   ]

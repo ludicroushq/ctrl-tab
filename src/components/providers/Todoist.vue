@@ -105,7 +105,7 @@ export default {
   methods: {
     calendar,
     async request() {
-      const response = await fetch('https://api.tab.ludicrous.xyz/v1/todoist/index', {
+      const response = await fetch('https://api.ctrltab.io/v1/todoist/index', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',

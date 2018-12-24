@@ -1,14 +1,14 @@
 <h1 align="center">ctrl tab</h1>
 
 <p align="center">
-  <a href="https://travis-ci.org/ludicrousxyz/ctrltab" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/travis/ludicrousxyz/ctrltab.svg" alt="Build Status"></a>
+  <a href="https://travis-ci.org/ludicrousxyz/ctrl-tab" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/travis/ludicrousxyz/ctrl-tab.svg" alt="Build Status"></a>
 </p>
 
 ctrl tab is a chrome extension (support for other browsers coming soon) that fetches feeds from external sources including Reddit, Hacker News, GitHub, and Product Hunt (more providers coming soon).
 
 ## Screenshot
 
-![ctrl tab screenshot](https://raw.githubusercontent.com/ludicrousxyz/ctrltab/master/public/img/screenshot.png)
+![ctrl tab screenshot](https://raw.githubusercontent.com/ludicrousxyz/ctrl-tab/master/public/img/screenshot.png)
 
 ## Contribute
 
@@ -27,4 +27,4 @@ npm run watch
 
 ### Server
 
-All server related code is in the [ctrltab-api](https://github.com/ludicrousxyz/ctrltab-api) repository.
+All server related code is in the [ctrl-tab-api](https://github.com/ludicrousxyz/ctrl-tab-api) repository.
