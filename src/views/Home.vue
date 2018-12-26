@@ -72,7 +72,7 @@
 import draggable from 'vuedraggable';
 import _ from 'lodash';
 
-import { getData, storeData } from '@/utils/local-storage';
+import { getData, storeData, clearData } from '@/utils/local-storage';
 import Fab from '@/components/Fab.vue';
 import Standard from '@/components/providers/Standard.vue';
 import Todoist from '@/components/providers/Todoist.vue';
@@ -112,6 +112,7 @@ export default {
 
     remove(key) {
       this.providers = this.providers.filter(obj => obj !== key);
+      clearData(key);
       storeData('providers', this.providers);
     },
 
