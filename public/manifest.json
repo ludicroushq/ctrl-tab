@@ -23,7 +23,6 @@
   "content_security_policy": "script-src 'self' 'unsafe-eval' https://ssl.google-analytics.com https://www.google-analytics.com/analytics.js; object-src 'self'",
   "permissions": [
     "identity",
-    "tabs",
     "https://api.ctrltab.io/*",
     "https://todoist.com/oauth/*",
     "http://localhost:3000/*"
