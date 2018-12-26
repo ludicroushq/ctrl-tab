@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const fs = require('fs');
 const childProcess = require('child_process');
@@ -12,27 +13,27 @@ const webStore = require('chrome-webstore-upload')({
   refreshToken: process.env.CHROME_CLIENT_REFRESH_TOKEN,
 });
 
-const upload = (zip) => new Promise((resolve) => {
-  webStore.uploadExisting(zip).then(res => {
+const upload = zip => new Promise((resolve) => {
+  webStore.uploadExisting(zip).then((res) => {
     resolve(res);
   });
-})
+});
 
 const publish = () => new Promise((resolve) => {
-  webStore.publish('default').then(res => {
+  webStore.publish('default').then(() => {
     resolve();
   });
-})
+});
 
 const exec = async () => {
   console.log('> Building application');
   childProcess.execSync('NODE_ENV=production npm run build', { stdio: [0, 1, 2] });
   console.log();
   console.log('> Fetching metadata');
-  let { version: oldVersion } = await chromeWebStoreItemProperty(process.env.CHROME_EXTENSION_ID);
+  const { version: oldVersion } = await chromeWebStoreItemProperty(process.env.CHROME_EXTENSION_ID);
   const versionArray = oldVersion.split('.');
   const patch = versionArray.pop();
-  versionArray.push(parseInt(patch) + 1);
+  versionArray.push(parseInt(patch, 10) + 1);
   const version = versionArray.join('.');
   console.log();
   console.log('> Updating manifest');
@@ -64,7 +65,7 @@ const exec = async () => {
   } catch (_) {
     // do nothing
   }
-}
+};
 
 exec().then(() => {
   console.log();
