@@ -41,6 +41,7 @@ const exec = async () => {
   const manifest = JSON.parse(fs.readFileSync(manifestPath));
   delete manifest.key;
   manifest.version = version;
+  manifest.permissions = manifest.permissions.filter(item => item !== 'http://localhost:3000/*');
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
   console.log();
   console.log('> Zipping folder');
