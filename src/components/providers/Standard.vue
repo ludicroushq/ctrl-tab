@@ -5,7 +5,17 @@
         {{ this.data.title }}
       </a>
     </Message-Header>
-    <Message-Body>
+    <Message-Body v-if="this.error">
+      <div class="has-text-centered content">
+        <br>
+        <div class="item">
+          <div class="title is-6">
+            {{this.error}}
+          </div>
+        </div>
+      </div>
+    </Message-Body>
+    <Message-Body v-else>
       <Message-Item :data="this.posts" :isLoading="this.isLoading" :moreURL="this.data.url">
         <div class="subtitle is-7" slot-scope="post" v-html="post.item.subtitle"></div>
         <template slot="attribution" v-if="this.data.attribution">
@@ -42,26 +52,39 @@ export default {
       posts: [],
       isLoading: true,
       isFetching: true,
+      error: '',
     };
   },
   methods: {
     async request() {
       const response = await fetch(`https://api.ctrltab.io/v1/${this.data.slug}/index`);
-      const data = await response.json();
       this.isFetching = false;
+      if (!response.ok && response.status >= 500) {
+        throw new Error('there was a problem fetching the latest posts, we are working on getting it fixed');
+      }
+      const data = await response.json();
+      if (response.status >= 300) {
+        throw new Error(data.message);
+      }
       if (data.articles) {
         return data.articles;
       }
       return data.posts;
     },
     async handler() {
-      const data = await this.request();
-      this.posts = data;
+      let data;
+      this.error = '';
+      try {
+        data = await this.request();
+        this.posts = data;
+        storeData(this.data.slug, {
+          data,
+          createdAt: Date.now(),
+        });
+      } catch (err) {
+        this.error = err.message;
+      }
       this.isLoading = false;
-      storeData(this.data.slug, {
-        data,
-        createdAt: Date.now(),
-      });
     },
     async refresh() {
       this.isFetching = true;

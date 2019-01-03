@@ -13,8 +13,8 @@
                 class="hide-underline"
                 target="_blank"
                 rel="noopener noreferrer"
+                v-html="item.title"
               >
-                {{ item.title }}
               </a>
             </div>
           </slot>

@@ -40,6 +40,19 @@
               </nav>
             </div>
           </div>
+          <hr>
+          <div class="content">
+            <h2>Don't see what you are looking for?</h2>
+            Most news websites also provide RSS feeds which we now support! Try Googling "INSERT_NEWS_WEBSITE rss feeds". If you find a working feed (it looks like a bunch of code), then just do the following:
+            <ol>
+              <li>Add a RSS component from above (in the "custom" category)</li>
+              <li>Close this menu</li>
+              <li>Press the settings button in the title</li>
+              <li>Paste the link and press save</li>
+              <li>Voilà!</li>
+            </ol>
+            If you still can't find what you are looking for, then open an issue <a href="https://github.com/ludicrousxyz/ctrl-tab/issues" target="_blank" rel="noopener noreferrer">here</a> and we will take a look.
+          </div>
         </section>
         <footer class="modal-card-foot">
           <button class="button is-success" @click="hideAddModal">Close</button>
@@ -52,7 +65,7 @@
         <div class="column has-text-centered">
           <h1 class="title">hello world!</h1>
           <h2 class="subtitle">to get started, click the + sign in the bottom right.</h2>
-          <h2 class="subtitle is-7">please note: ctrl tab is currently in BETA. please report any issues you find on <a href="https://github.com/ludicrousxyz/ctrl-tab" target="_blank" rel="noopener noreferrer">GitHub</a>.</h2>
+          <h2 class="subtitle is-7">please note: ctrl tab is currently in BETA. please report any issues you find on <a href="https://github.com/ludicrousxyz/ctrl-tab/issues" target="_blank" rel="noopener noreferrer">GitHub</a>.</h2>
         </div>
       </div>
     </div>
@@ -60,9 +73,9 @@
       <div
         class="column"
         v-for="provider in this.computedProviders"
-        :key="provider.key"
+        :key="`${provider.key}${provider.id ? `-${provider.id}` : ''}`"
       >
-        <component :is="provider.component" :name="provider.key" :data="provider.data" :edit="edit" :remove="remove"></component>
+        <component :is="provider.component" :attributes="provider.attributes" :name="provider.key" :id="provider.id" :data="provider.data" :edit="edit" :remove="remove"></component>
       </div>
     </draggable>
   </section>
@@ -75,6 +88,7 @@ import _ from 'lodash';
 import { getData, storeData, clearData } from '@/utils/local-storage';
 import Fab from '@/components/Fab.vue';
 import Standard from '@/components/providers/Standard.vue';
+import StandardV2 from '@/components/providers/StandardV2.vue';
 import Todoist from '@/components/providers/Todoist.vue';
 
 import providersList from '@/../public/providers.json';
@@ -86,6 +100,7 @@ export default {
   props: ['query'],
   components: {
     Standard,
+    StandardV2,
     Todoist,
 
     Fab,
@@ -105,13 +120,43 @@ export default {
       storeData('providers', this.providers);
     },
 
+    getNextId(key) {
+      const providers = this.providers.filter(obj => (typeof obj === 'object' && obj.provider === key));
+      let i = 1;
+      let done = false;
+      const findFunc = obj => obj.id === i;
+      while (!done) {
+        const found = providers.find(findFunc);
+        if (found) {
+          i += 1;
+        } else {
+          done = true;
+        }
+      }
+      return i;
+    },
+
     add(key) {
-      this.providers.push(key);
+      const provider = allProviders.find(obj => obj.key === key);
+      let newKey = key;
+      if (provider.multi) {
+        newKey = {
+          id: this.getNextId(key),
+          provider: key,
+        };
+      }
+      this.providers.push(newKey);
       storeData('providers', this.providers);
     },
 
     remove(key) {
-      this.providers = this.providers.filter(obj => obj !== key);
+      this.providers = this.providers.filter((obj) => {
+        if (key.includes('/') && typeof obj === 'object') {
+          const split = key.split('/');
+          return obj.provider !== split[0] || obj.id !== parseInt(split[1], 10);
+        }
+        return obj !== key;
+      });
       clearData(key);
       storeData('providers', this.providers);
     },
@@ -125,7 +170,13 @@ export default {
     },
 
     getProviders(providers) {
-      return providers.map(key => allProviders.find(obj => obj.key === key));
+      return providers.map((key) => {
+        if (typeof key === 'object') {
+          const provider = allProviders.find(obj => obj.key === key.provider);
+          return Object.assign({}, provider, key);
+        }
+        return allProviders.find(obj => obj.key === key);
+      });
     },
   },
 
@@ -136,11 +187,7 @@ export default {
   },
 
   data() {
-    let providers = getData('providers');
-    if (!providers || typeof providers[0] === 'object') {
-      providers = [];
-      storeData('providers', providers);
-    }
+    const providers = getData('providers');
     const computedProviders = this.getProviders(providers);
 
     const categories = _.uniq(allProviders.map(provider => provider.category || 'Uncategorized'));

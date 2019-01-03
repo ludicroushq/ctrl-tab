@@ -1,8 +1,13 @@
 <template>
-  <div class="message-header" :style="`background: ${background};`">
+  <div class="message-header" :style="`background: ${this.background};`">
     <slot></slot>
     <div class="is-pulled-right">
       <div v-if="this.edit">
+        <a class="button is-small is-primary" @click="settings()" :style="`background-color: ${this.background};`" v-if="this.settings">
+          <span class="icon">
+            <i class="material-icons">settings</i>
+          </span>
+        </a>
         <a class="button is-small is-primary move" :style="`background-color: ${this.background};`">
           <span class="icon">
             <i class="material-icons">open_with</i>
@@ -33,7 +38,7 @@ import Spinner from '@/components/Spinner.vue';
 
 export default {
   name: 'Message-Header',
-  props: ['background', 'isLoading', 'edit', 'remove', 'name', 'refresh'],
+  props: ['background', 'isLoading', 'edit', 'remove', 'name', 'refresh', 'settings'],
   components: {
     Spinner,
   },

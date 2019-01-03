@@ -285,6 +285,21 @@
       "key": "todoist",
       "component": "Todoist",
       "category": "Productivity"
+    },
+    {
+      "name": "RSS (BETA)",
+      "key": "rss",
+      "multi": "true",
+      "component": "StandardV2",
+      "attributes": {
+        "url": ""
+      },
+      "data": {
+        "title": "RSS (BETA)",
+        "slug": "rss",
+        "background": "#ff9800"
+      },
+      "category": "Custom"
     }
   ]
 }
