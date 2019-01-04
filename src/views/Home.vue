@@ -187,7 +187,11 @@ export default {
   },
 
   data() {
-    const providers = getData('providers');
+    let providers = getData('providers');
+    if (!providers) {
+      providers = [];
+      storeData('providers', providers);
+    }
     const computedProviders = this.getProviders(providers);
 
     const categories = _.uniq(allProviders.map(provider => provider.category || 'Uncategorized'));
