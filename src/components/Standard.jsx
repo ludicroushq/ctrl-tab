@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default () => (
   <React.Fragment>
     <article className="message">
-      <div className="message-header" style={{ backgroundColor: '#000' }}>
+      <div className="message-header" style={{ backgroundColor: '#ff6600' }}>
         <div className="has-text-centered message-title">
-          <span>GitHub</span>
+          <span>Hacker News</span>
           <span className="is-pulled-right">
             <FontAwesomeIcon icon="sync" size="sm" />
           </span>
@@ -30,7 +30,7 @@ export default () => (
         }
 
         .message {
-          height: 100vh;
+          height: 95vh;
           overflow: hidden;
           display: flex;
           flex-direction: column;

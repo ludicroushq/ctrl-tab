@@ -5,10 +5,14 @@ import pkg from '../../package.json';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faSync
+  faSync,
+  faCog,
+  faClock,
 } from '@fortawesome/free-solid-svg-icons';
 library.add(
   faSync,
+  faCog,
+  faClock,
 );
 
 import Navigation from '../components/Navigation';
@@ -27,6 +31,7 @@ export default class extends App {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="description" hid="description" content={pkg.description} />
         </Head>
+        <Navigation />
         <div className="main">
           <Component />
         </div>
