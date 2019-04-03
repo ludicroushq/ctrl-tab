@@ -8,11 +8,17 @@ import {
   faSync,
   faCog,
   faClock,
+  faSun,
+  faMoon,
+  faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons';
 library.add(
   faSync,
   faCog,
   faClock,
+  faSun,
+  faMoon,
+  faInfoCircle
 );
 
 import Navigation from '../components/Navigation';

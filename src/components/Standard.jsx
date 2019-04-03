@@ -6,6 +6,9 @@ export default () => (
     <article className="message">
       <div className="message-header" style={{ backgroundColor: '#ff6600' }}>
         <div className="has-text-centered message-title">
+          <span className="is-pulled-left">
+            <FontAwesomeIcon icon="info-circle" size="sm" />
+          </span>
           <span>Hacker News</span>
           <span className="is-pulled-right">
             <FontAwesomeIcon icon="sync" size="sm" />
@@ -15,8 +18,8 @@ export default () => (
       <div className="message-body">
         { Array.from({length: 10}).map((a, i) => (
           <div className="item" key={i}>
-            <div className="title is-6">Hi</div>
-            <div className="subtitle is-7">Hello</div>
+            <div className="title has-text-white is-6">Hi</div>
+            <div className="subtitle has-text-white is-7">Hello</div>
             <hr />
           </div>
         )) }
@@ -35,18 +38,36 @@ export default () => (
           display: flex;
           flex-direction: column;
           padding: 1em 0.5em;
-          background-color: rgba(255, 255, 255, 0);
+          background-color: rgba(0, 0, 0, 0);
         }
 
         .message-body {
           height: 100%;
           overflow: hidden;
-          background-color: #ffffff;
+          background-color: #111111;
           padding: 0.5em;
         }
 
+        .item {
+          color: #ffffff;
+        }
+
         .message-body:hover {
-          overflow-y: scroll;
+          overflow-y: auto;
+        }
+
+        .message-body::-webkit-scrollbar {
+          width: 10px;
+        }
+
+        .message-body::-webkit-scrollbar-thumb {
+          background: #444;
+          border-radius: 20px;
+        }
+
+        .message-body::-webkit-scrollbar-track {
+          background: #333;
+          border-radius: 20px;
         }
       `}
     </style>

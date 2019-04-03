@@ -17,6 +17,12 @@ export default () => (
         </div>
         <div className="navbar-end">
           <div className="navbar-item">
+            <FontAwesomeIcon icon="sun" />
+          </div>
+          <div className="navbar-item">
+            <FontAwesomeIcon icon="moon" />
+          </div>
+          <div className="navbar-item">
             <FontAwesomeIcon icon="clock" />
           </div>
           <div className="navbar-item">
@@ -29,6 +35,14 @@ export default () => (
       {`
         .navbar {
           height: 5vh !important;
+        }
+
+        .navbar-brand {
+          width: 15%;
+        }
+
+        .navbar-end {
+          width: 15%;
         }
 
         .navbar-start {
