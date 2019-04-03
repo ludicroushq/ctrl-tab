@@ -1,1 +1,6 @@
 @import './bulma.scss';
+
+html, body, #__next, .main {
+  height: 100vh;
+  overflow: hidden;
+}
