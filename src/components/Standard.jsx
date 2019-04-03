@@ -35,12 +35,14 @@ export default () => (
           display: flex;
           flex-direction: column;
           padding: 1em 0.5em;
-          background-color: #ffffff;
+          background-color: rgba(255, 255, 255, 0);
         }
 
         .message-body {
           height: 100%;
           overflow: hidden;
+          background-color: #ffffff;
+          padding: 0.5em;
         }
 
         .message-body:hover {
