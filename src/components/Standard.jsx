@@ -6,11 +6,13 @@ export default () => (
     <article className="message">
       <div className="message-header" style={{ backgroundColor: '#ff6600' }}>
         <div className="has-text-centered message-title">
-          <span className="is-pulled-left">
+          <span className="standard-left">
             <FontAwesomeIcon icon="info-circle" size="sm" />
           </span>
-          <span>Hacker News</span>
-          <span className="is-pulled-right">
+          <span className="standard-title has-text-centered">
+            Hacker News<br /><small>/r/all</small>
+          </span>
+          <span className="standard-right">
             <FontAwesomeIcon icon="sync" size="sm" />
           </span>
         </div>
@@ -30,6 +32,36 @@ export default () => (
         .message-title {
           width: 100%;
           text-transform: uppercase;
+          display: flex;
+          align-items: center;
+        }
+
+        .standard-left {
+          flex: 1;
+          flex-grow: 0;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+        }
+
+        .standard-right {
+          flex: 1;
+          flex-grow: 0;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+        }
+
+        .standard-title {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
+
+        .standard-title small {
+          font-size: 0.75em;
         }
 
         .message {

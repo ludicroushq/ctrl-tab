@@ -1,6 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import Notice from './Notice';
+
 export default () => (
   <React.Fragment>
     <nav className="navbar is-black">
@@ -12,7 +14,7 @@ export default () => (
       <div className="navbar-menu">
         <div className="navbar-start">
           <div className="navbar-item">
-            <small>The servers are currently under maintenance. They will be up shortly</small>
+            <Notice message="The servers are currently under maintenance. They will be up shortly" />
           </div>
         </div>
         <div className="navbar-end">

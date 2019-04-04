@@ -41,7 +41,13 @@ const SortableContainer = sortableContainer(({children}) => {
 
 export default class Index extends React.Component {
   state = {
-    items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5',],
+    items: [
+      'Item 1',
+      'Item 2',
+      'Item 3',
+      'Item 4',
+      'Item 5',
+    ],
   };
 
   onSortEnd = ({oldIndex, newIndex}) => {
@@ -55,7 +61,7 @@ export default class Index extends React.Component {
 
     return (
       <React.Fragment>
-        <SortableContainer onSortEnd={this.onSortEnd} axis="x">
+        <SortableContainer onSortEnd={this.onSortEnd} axis="x" pressDelay={250}>
           {items.map((value, index) => (
             <SortableItem key={`item-${index}`} index={index} value={value} />
           ))}
