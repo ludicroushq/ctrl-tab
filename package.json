@@ -1,50 +1,50 @@
 {
   "name": "ctrl-tab",
   "version": "0.0.0",
-  "private": true,
+  "description": "replace your new tab page with the data that matters to you",
+  "main": "index.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test": "npm run lint",
-    "watch": "webpack --config ./node_modules/@vue/cli-service/webpack.config.js --watch",
-    "lint": "vue-cli-service lint && eslint public scripts",
-    "test:unit": "vue-cli-service test:unit",
-    "publish:firefox": "cd dist && web-ext-submit"
+    "dev": "next src",
+    "build": "next build src",
+    "start": "next start src",
+    "export": "next export src"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ludicrousxyz/ctrl-tab.git"
+  },
+  "keywords": [
+    "ctrl",
+    "tab",
+    "data",
+    "new",
+    "tab",
+    "page",
+    "chrome",
+    "extension",
+    "firefox",
+    "add-on"
+  ],
+  "author": "Manthan Mallikarjun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ludicrousxyz/ctrl-tab/issues"
+  },
+  "homepage": "https://github.com/ludicrousxyz/ctrl-tab#readme",
   "dependencies": {
-    "animate.css": "^3.7.0",
-    "lodash": "^4.17.11",
-    "material-icons": "^0.2.3",
-    "moment": "^2.22.2",
-    "uuid": "^3.3.2",
-    "vue": "^2.5.16",
-    "vue-analytics": "^5.16.1",
-    "vue-router": "^3.0.1",
-    "vuedraggable": "^2.16.0"
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "@zeit/next-sass": "^1.0.1",
+    "array-move": "^2.1.0",
+    "next": "^8.0.3",
+    "node-sass": "^4.11.0",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-sortable-hoc": "^1.8.3"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
-    "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
-    "@vue/cli-plugin-pwa": "^3.1.1",
-    "@vue/cli-plugin-unit-jest": "^3.0.0-beta.15",
-    "@vue/cli-service": "^3.0.0-beta.15",
-    "@vue/eslint-config-airbnb": "^3.0.0-rc.3",
-    "@vue/test-utils": "^1.0.0-beta.16",
-    "adm-zip": "^0.4.11",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^23.0.1",
-    "bulma": "^0.7.1",
-    "chrome-web-store-item-property": "^1.1.2",
-    "chrome-webstore-upload": "^0.2.2",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.16",
-    "web-ext-submit": "^2.9.2",
-    "webpack-command": "^0.4.1"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "bulma": "^0.7.4",
+    "bulma-tooltip": "^2.0.2"
+  }
 }
