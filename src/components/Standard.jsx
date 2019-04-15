@@ -7,10 +7,29 @@ export default () => (
       <div className="message-header" style={{ backgroundColor: '#ff6600' }}>
         <div className="has-text-centered message-title">
           <span className="standard-left">
-            <FontAwesomeIcon icon="info-circle" size="sm" />
+            <FontAwesomeIcon icon="cog" size="sm" />
           </span>
           <span className="standard-title has-text-centered">
-            Hacker News<br /><small>/r/all</small>
+            Hacker News
+            <br />
+            <div className="dropdown standard-options is-hoverable">
+              <div className="dropdown-trigger">
+                <button className="button is-small is-fullwidth" aria-haspopup="true" aria-controls="dropdown-menu4">
+                  <span>/r/all</span>
+                </button>
+              </div>
+              <div className="dropdown-menu" id="dropdown-menu4" role="menu">
+                <div className="dropdown-content">
+                  <a className="dropdown-item">
+                    /r/funny
+                  </a>
+                  <hr className="dropdown-divider" />
+                  <a className="dropdown-item">
+                    /r/gifs
+                  </a>
+                </div>
+              </div>
+            </div>
           </span>
           <span className="standard-right">
             <FontAwesomeIcon icon="sync" size="sm" />
@@ -60,8 +79,34 @@ export default () => (
           flex-direction: column;
         }
 
-        .standard-title small {
-          font-size: 0.75em;
+        .standard-options {
+          width: 75%;
+        }
+
+        .standard-options .dropdown-trigger {
+          width: 100%;
+          padding-top: 2px;
+        }
+
+        .standard-options .dropdown-trigger button {
+          background-color: #ff6600;
+          color: #ffffff;
+        }
+
+        .standard-options .dropdown-menu {
+          min-width: 100%;
+        }
+
+        .standard-options .dropdown-menu .dropdown-divider {
+          margin: 0px 0px;
+        }
+
+        .standard-options .dropdown-menu .dropdown-content .dropdown-item {
+          font-size: 0.625em;
+          text-transform: none;
+          text-align: center;
+          padding-right: 0px;
+          padding-left: 0px;
         }
 
         .message {

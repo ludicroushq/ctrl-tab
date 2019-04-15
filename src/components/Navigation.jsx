@@ -18,18 +18,18 @@ export default () => (
           </div>
         </div>
         <div className="navbar-end">
-          <div className="navbar-item">
+          <a className="navbar-item tooltip is-tooltip-bottom is-tooltip-info" data-tooltip="Enable Light Mode">
             <FontAwesomeIcon icon="sun" />
-          </div>
+          </a>
           <div className="navbar-item">
             <FontAwesomeIcon icon="moon" />
           </div>
-          <div className="navbar-item">
+          <a className="navbar-item tooltip is-tooltip-bottom is-tooltip-info" data-tooltip="Set Up Launcher">
             <FontAwesomeIcon icon="clock" />
-          </div>
-          <div className="navbar-item">
+          </a>
+          <a className="navbar-item tooltip is-tooltip-left is-tooltip-info" data-tooltip="Settings">
             <FontAwesomeIcon icon="cog" />
-          </div>
+          </a>
         </div>
       </div>
     </nav>

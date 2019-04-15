@@ -41,6 +41,7 @@ const SortableContainer = sortableContainer(({children}) => {
 
 export default class Index extends React.Component {
   state = {
+    launcher: true,
     items: [
       'Item 1',
       'Item 2',
@@ -57,7 +58,7 @@ export default class Index extends React.Component {
   };
 
   render() {
-    const {items} = this.state;
+    const { items } = this.state;
 
     return (
       <React.Fragment>
