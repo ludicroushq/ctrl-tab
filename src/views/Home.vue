@@ -69,15 +69,18 @@
         </div>
       </div>
     </div>
-    <draggable v-else class="columns" :list="this.providers" @end="onEnd">
-      <div
-        class="column"
-        v-for="provider in this.computedProviders"
-        :key="`${provider.key}${provider.id ? `-${provider.id}` : ''}`"
-      >
-        <component :is="provider.component" :attributes="provider.attributes" :name="provider.key" :id="provider.id" :data="provider.data" :edit="edit" :remove="remove"></component>
-      </div>
-    </draggable>
+    <div v-else>
+      <div class="has-text-centered is-size-7" style="padding: 0.125rem;">{{ this.message || '&nbsp;' }}</div>
+      <draggable class="columns" :list="this.providers" @end="onEnd">
+        <div
+          class="column"
+          v-for="provider in this.computedProviders"
+          :key="`${provider.key}${provider.id ? `-${provider.id}` : ''}`"
+        >
+          <component :is="provider.component" :attributes="provider.attributes" :name="provider.key" :id="provider.id" :data="provider.data" :edit="edit" :remove="remove"></component>
+        </div>
+      </draggable>
+    </div>
   </section>
 </template>
 
@@ -215,10 +218,23 @@ export default {
       leftCategories,
       rightCategories,
       providers,
+      message: null,
       computedProviders,
       addModal: false,
       edit: !providers.length,
     };
+  },
+
+  async created() {
+    let message;
+    try {
+      const req = await fetch('https://api.ctrltab.io');
+      const res = await req.json();
+      if (res) message = res.info;
+    } catch (err) {
+      // do nothing
+    }
+    this.message = message;
   },
 };
 </script>
