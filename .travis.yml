@@ -15,7 +15,7 @@ script:
 
 deploy:
   - provider: script
-    script: ./scripts/deploy.js
+    script: chmod +x ./scripts/deploy.js && ./scripts/deploy.js
     skip_cleanup: true
     on:
       master: true
