@@ -229,7 +229,7 @@ export default {
   async created() {
     let message;
     try {
-      const req = await fetch('https://api.ctrltab.io');
+      const req = await fetch('https://api.ctrltab.io?v2=true');
       const res = await req.json();
       if (res) message = res.info;
     } catch (err) {
