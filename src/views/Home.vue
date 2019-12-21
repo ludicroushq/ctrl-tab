@@ -70,10 +70,11 @@
       </div>
     </div>
     <div v-else>
-      <div class="has-text-centered is-size-7" style="padding: 0.125rem;">{{ this.message || '&nbsp;' }}</div>
+      <div class="has-text-centered is-size-7" style="padding: 0.125rem; display: block;" v-html="this.message || '&nbsp;'"></div>
       <draggable class="columns" :list="this.providers" @end="onEnd">
         <div
           class="column"
+          style="padding-top: 0px; margin-top: 0.75rem;"
           v-for="provider in this.computedProviders"
           :key="`${provider.key}${provider.id ? `-${provider.id}` : ''}`"
         >
